@@ -1,0 +1,42 @@
+html {
+	width: 98%;
+	background-color: #FFF;
+}
+
+.page-bar {
+	color: #AAA;
+	height: 35px;
+	background-color: #F7F7F7;
+	margin-top: 0;
+	margin-bottom: 30px;
+}
+
+.page-bar ul {
+	padding-top: 10px;
+	margin-left: -30px;
+	list-style: none;
+}
+
+.page-bar ul li {
+	float: left;
+}
+
+.page-bar ul li a {
+	color: #AAA;
+}
+
+.form-body {
+	margin-top: 20px;
+}
+
+.form-actions {
+	background-color: #F5F5F5;
+	height: 80px;
+	margin-top: 40px;
+	position: relative;
+}
+
+.blue {
+	height: 35px;
+	margin-top: 25px;
+}
