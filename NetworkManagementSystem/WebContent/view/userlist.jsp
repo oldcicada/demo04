@@ -41,6 +41,7 @@
 							<thead>
 								<tr>
 									<th class="text-center">序号</th>
+									<th class="text-center">姓名</th>
 									<th class="text-center">学号</th>
 									<th class="text-center">状态</th>
 									<th class="text-center">email</th>
@@ -52,11 +53,12 @@
 							<c:forEach  var="item" items="${userlist}"  varStatus="st">
 								  <tr>
 								    <td>${st.index+1 }</td>
-								    <td>${item.number }</td>
-								    <td>${item.state }</td>
-								     <td>${item.email }</td>
-								     <td>${item.sex }</td>
-								     <td>${item.roomnumber }</td>
+								    <td>${item[0] }</td>
+								    <td>${item[2] }</td>
+								     <td>${item[3] }</td>
+								     <td>${item[4] }</td>
+								     <td>${item[5] }</td>
+								     <td>${item[6] }</td>
 								  </tr>
 								  </c:forEach>
 							</tbody>

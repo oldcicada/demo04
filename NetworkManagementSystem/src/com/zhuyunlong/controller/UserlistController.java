@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.zhuyunlong.dao.UserinfoDao;
-import com.zhuyunlong.pojo.Userinfo;
 
 @WebServlet("/userlist")
 public class UserlistController extends HttpServlet {
@@ -18,8 +17,9 @@ public class UserlistController extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserinfoDao rd=new UserinfoDao();
-		List<Userinfo> userlist = rd.getRoomList();
+		List<Object[]> userlist = rd.getRoomList();
 		request.setAttribute("userlist", userlist);
+		System.out.println(userlist+"0000000000");
 		request.getRequestDispatcher("view/userlist.jsp").forward(request, response);
 	}
 

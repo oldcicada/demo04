@@ -1,12 +1,12 @@
 package com.zhuyunlong.dao;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.ArrayListHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
-import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import com.zhuyunlong.pojo.Userinfo;
@@ -47,11 +47,15 @@ public class UserinfoDao {
 			e.printStackTrace();
 		}
 	}
-	public List<Userinfo> getRoomList() {
-		String sql = "select * from userinfo";
-		List<Userinfo> list = new ArrayList<>();
+	public List<Object[]> getRoomList() {
+		String sql = "select user.`name`, u.* from userinfo u,user where u.`number`=user.`number`";
+		List<Object[]> list =null;
 		try {
-			list = runner.query(sql, new BeanListHandler<Userinfo>(Userinfo.class));
+			list = runner.query(sql,new  ArrayListHandler());
+			for (Object[] objects : list) {
+				System.out.println(Arrays.toString(objects));
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
