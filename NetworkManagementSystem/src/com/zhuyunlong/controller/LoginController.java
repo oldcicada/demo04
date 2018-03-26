@@ -20,6 +20,7 @@ public class LoginController extends HttpServlet {
 			for (Cookie cookie : cookies) {
 				if("username".equals(cookie.getName())) {
 					request.setAttribute("username", cookie.getValue());
+					break;
 				}
 			}
 		}

@@ -19,7 +19,6 @@ public class UserlistController extends HttpServlet {
 		UserinfoDao rd=new UserinfoDao();
 		List<Object[]> userlist = rd.getRoomList();
 		request.setAttribute("userlist", userlist);
-		System.out.println(userlist+"0000000000");
 		request.getRequestDispatcher("view/userlist.jsp").forward(request, response);
 	}
 
