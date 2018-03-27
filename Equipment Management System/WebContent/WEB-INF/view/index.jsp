@@ -30,6 +30,8 @@
 				<li role="separator" class="divider"></li>
 				<li><a href="view/mime/modifypass" target="iframe"><i class="glyphicon glyphicon-exclamation-sign"></i> 密码修改 </a></li>
 				<li><a href="login"><i class="glyphicon glyphicon-log-out"></i> 安全退出 </a></li>
+				<li role="separator" class="divider"></li>
+				<li><a href="view/about" target="iframe"><i class="glyphicon glyphicon glyphicon-bookmark"></i> 关于本站 </a></li>
 			</ul>
 		</div>
 	</div>

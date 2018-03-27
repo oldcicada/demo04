@@ -8,6 +8,18 @@
 <link rel="stylesheet" type="text/css"
 	href="resource/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="resource/css/common.css" />
+<style type="text/css">
+.headpicture {
+	width: 60px;
+	height: 60px;
+	margin: 5px;
+}
+.headpicture img{
+	width:100%;
+	height:100%;
+	border-radius: 50%;
+}
+</style>
 </head>
 <body>
 	<div class="page-container">
@@ -28,47 +40,40 @@
 				<form action="view/mime/userinfo" method="post"
 					class="form-horizontal">
 					<div class="form-body">
-						<div class="alert alert-danger display-hide"
-							style="display: none;">
-							<button class="close" data-close="alert"></button>
-							有信息输入错误，请检查您的输入.
-						</div>
-						<div class="alert alert-success display-hide"
-							style="display: none;">
-							<button class="close" data-close="alert"></button>
-							信息输入正确!
-						</div>
 						<h3 class="form-section">个人信息</h3>
-						<div class="form-group"
-							style="height: 80px; border-top: 1px solid #ccc; padding-top: 20px;">
+						<div id="topline" class="form-group">
 							<label class="col-md-3 control-label">头像：</label>
 							<div class="col-md-9">
-								<input type="file" id="exampleInputFile">
-								<p class="help-block">130:130的图片</p>
+								<div class="headpicture"
+									style="margin: 5px; border-radius: 50%;">
+									<img id="headpicture" src="resource\img\avatar3.jpg" alt="head">
+								</div>
+								<input type="file" id="file">
 							</div>
+							<div class="clearfix"></div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-md-3">用户名：<span
 								class="required"> * </span></label>
 							<div class="col-md-4">
-								<input type="text" class="form-control" name="username" value="${user.username }"
-									placeholder="请输入用户名" /> <span class="help-block"> 用户登录名
-									，数字字母组成长度在5-20之间</span>
+								<input type="text" class="form-control" name="username"
+									value="${user.username }" placeholder="请输入用户名" /> <span
+									class="help-block"> 用户登录名 ，数字字母组成长度在5-20之间</span>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-md-3">邮箱：</label>
 							<div class="col-md-4">
-								<input type="email" class="form-control" name="email" value="${user.email }"
-									placeholder="请输入Email"> <span class="help-block">
-									请输入正确的邮箱，可以用来找回密码使用 </span>
+								<input type="email" class="form-control" name="email"
+									value="${user.email }" placeholder="请输入Email"> <span
+									class="help-block"> 请输入正确的邮箱，可以用来找回密码使用 </span>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-md-3">昵称：</label>
 							<div class="col-md-4">
-								<input type="text" class="form-control" name="nickname"  value="${user.nickname }"
-									placeholder="请输入Email" />
+								<input type="text" class="form-control" name="nickname"
+									value="${user.nickname }" placeholder="请输入Email" />
 							</div>
 						</div>
 
@@ -100,7 +105,8 @@
 										</span><label class="checkbox-inline"> 管理员 </label>
 									</div>
 									<div class="checker disabled disabled"
-										id="uniform-inlineCheckbox23"> <!-- disabled="disabled" -->
+										id="uniform-inlineCheckbox23">
+										<!-- disabled="disabled" -->
 										<span> <input type="checkbox" id="inlineCheckbox23"
 											value="option3" disabled="disabled">
 										</span><label class="checkbox-inline"> 维修人员 </label>
