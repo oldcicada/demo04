@@ -74,11 +74,11 @@
 						<div class="panel-collapse collapse" id="panel2">
 							<div class="panel-body">
 								<ul>
-									<li><a href="" target=""><i class="glyphicon glyphicon-tasks"></i> 员工管理</a></li>
-									<li><a href="#" target=""><i class="glyphicon glyphicon-user"></i> 角色管理</a></li>
-									<li><a href="#" target=""><i class="glyphicon glyphicon-tag"></i> 菜单管理</a></li>
-									<li><a href="#" target=""><i class="glyphicon glyphicon-print"></i> 数据字典</a></li>
-									<li><a href="#" target=""><i class="glyphicon glyphicon-home"></i> 办公室管理</a></li>
+									<li><a href="view/sys/employeeList" target="iframe"><i class="glyphicon glyphicon-tasks"></i> 员工管理</a></li>
+									<li><a href="view/sys/roleList" target="iframe"><i class="glyphicon glyphicon-user"></i> 角色管理</a></li>
+									<li><a href="view/sys/menuList" target="iframe"><i class="glyphicon glyphicon-tag"></i> 菜单管理</a></li>
+									<li><a href="view/sys/dictList" target="iframe"><i class="glyphicon glyphicon-print"></i> 数据字典</a></li>
+									<li><a href="view/sys/roomList" target="iframe"><i class="glyphicon glyphicon-home"></i> 办公室管理</a></li>
 								</ul>
 							</div>
 						</div>
@@ -91,10 +91,10 @@
 						</div>
 						<div class="panel-collapse collapse" id="panel3">
 							<div class="panel-body">
-								<ul><li><a href="#" target=""><i class="glyphicon glyphicon-volume-up"></i> 数据库管理</a></li>
-								    <li><a href="#" target=""><i class="glyphicon glyphicon-wrench"></i> 设备报修</a></li>
-									<li><a href="#" target=""><i class="glyphicon glyphicon-flash"></i> 设备保修处理</a></li>
-									<li><a href="#" target=""><i class="glyphicon glyphicon-stats"></i> 维修记录查询</a></li>
+								<ul><li><a href="#" target="iframe"><i class="glyphicon glyphicon-volume-up"></i> 数据库管理</a></li>
+								    <li><a href="#" target="iframe"><i class="glyphicon glyphicon-wrench"></i> 设备报修</a></li>
+									<li><a href="#" target="iframe"><i class="glyphicon glyphicon-flash"></i> 设备保修处理</a></li>
+									<li><a href="#" target="iframe"><i class="glyphicon glyphicon-stats"></i> 维修记录查询</a></li>
 								</ul>
 							</div>
 						</div>
