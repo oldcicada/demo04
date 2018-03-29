@@ -37,7 +37,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<!-- BEGIN FORM-->
-				<form action="view/mime/userinfo" method="post"
+				<form action="view/mime/userinfo" method="post" enctype="multipart/form-data"
 					class="form-horizontal">
 					<div class="form-body">
 						<h3 class="form-section">个人信息</h3>
@@ -48,7 +48,7 @@
 									style="margin: 5px; border-radius: 50%;">
 									<img id="headpicture" src="resource\img\avatar3.jpg" alt="head">
 								</div>
-								<input type="file" id="file">
+								<input type="file" id="headSculpture" name="headSculpture">
 							</div>
 							<div class="clearfix"></div>
 						</div>
@@ -127,5 +127,7 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript" src="resource/js/jquery.min.js"></script>
+	<script type="text/javascript" src="resource/js/upload.js"></script>
 </body>
 </html>

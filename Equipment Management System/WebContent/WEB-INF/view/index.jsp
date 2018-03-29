@@ -91,9 +91,9 @@
 						</div>
 						<div class="panel-collapse collapse" id="panel3">
 							<div class="panel-body">
-								<ul><li><a href="#" target="iframe"><i class="glyphicon glyphicon-volume-up"></i> 数据库管理</a></li>
-								    <li><a href="#" target="iframe"><i class="glyphicon glyphicon-wrench"></i> 设备报修</a></li>
-									<li><a href="#" target="iframe"><i class="glyphicon glyphicon-flash"></i> 设备保修处理</a></li>
+								<ul><li><a href="view/equip/equipList" target="iframe"><i class="glyphicon glyphicon-volume-up"></i> 设备库管理</a></li>
+								    <li><a href="view/equip/applyForm" target="iframe"><i class="glyphicon glyphicon-wrench"></i> 设备报修</a></li>
+									<li><a href="view/equip/faultList" target="iframe"><i class="glyphicon glyphicon-flash"></i> 设备报修处理</a></li>
 									<li><a href="#" target="iframe"><i class="glyphicon glyphicon-stats"></i> 维修记录查询</a></li>
 								</ul>
 							</div>

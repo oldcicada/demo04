@@ -3,12 +3,11 @@
     <%@ include file="/base.jsp" %>
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="resource/css/bootstrap.min.css"/>
-		<link rel="stylesheet" type="text/css" href="resource/css/common.css"/>
-</head>
+			<link rel="stylesheet" type="text/css" href="resource/css/bootstrap.min.css"/>
+			<link rel="stylesheet" type="text/css" href="resource/css/common.css"/>
+	</head>
 	<body>
 		<div class="page-container">
 			<!-- BEGIN PAGE HEADER-->
@@ -16,30 +15,30 @@
 				<ul class="page-breadcrumb">
 					<li>
 						<i class="glyphicon glyphicon-home"></i>
-						<a href="#">系统管理</a>
+						<a href="index-2.html">设备管理</a>
 						<i class="glyphicon glyphicon-chevron-right"></i>
 					</li>
 					<li>
-						<a href="view/sys/roomList">办公地管理</a>
+						<a href="#">设备库管理</a>
 					</li>
 				</ul>
 			</div>
 			<!-- END PAGE HEADER-->
 			<ul class="nav nav-tabs">
 				<li >
-					<a href="view/sys/roomForm" >
-					列表 </a>
+					<a href="view/equip/equipList" >
+					设备列表 </a>
 				</li>
 				<li class="active" >
-					<a href="view/sys/roomList">
-					新增办公地 </a>
+					<a href="view/equip/equipForm">
+					新增设备 </a>
 				</li>
 			</ul>
 			<!-- BEGIN PAGE CONTENT-->
 			<div class="row">
 				<div class="col-md-12">
 							<!-- BEGIN FORM-->
-							<form action="view/sys/roomForm" method="post" class="form-horizontal">
+							<form action="view/equip/equipForm" method="post" class="form-horizontal">
 								<div class="form-body">
 									<div class="form-group">
 										<label for="exampleInputFile" class="col-md-3 control-label">头像：</label>
@@ -119,8 +118,8 @@
 								<div class="form-actions">
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
-											<button type="submit" class="btn btn-primary blue">提交</button>
-											<button type="reset" class="btn btn-default blue "><i class="glyphicon glyphicon-refresh"></i>重置信息</button>
+											<button type="submit" class="btn  btn-primary blue">提交</button>
+											<button type="reset" class="btn btn-default blue"><i class="glyphicon glyphicon-refresh"></i>重置信息</button>
 										</div>
 									</div>
 								</div>

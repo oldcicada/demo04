@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cicada.dao.RoleDao">
+  <select id="getRoleName" resultType="string" parameterType="_int" >
+	SELECT role.`rolename` FROM USER,role WHERE user.`roleid`=role.`id` AND user.`id`=#{id}
+  </select>
+</mapper>
