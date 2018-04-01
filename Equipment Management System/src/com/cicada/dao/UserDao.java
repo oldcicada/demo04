@@ -8,7 +8,7 @@ import com.cicada.entity.User;
 
 public interface UserDao {
 	// 登录获取用户id
-	public int login(@Param("username") String username, @Param("password") String password);
+	public User login(@Param("username") String username, @Param("password") String password);
 
 	// 登录获取id=?的用户信息
 	public User getUserMessage(int id);

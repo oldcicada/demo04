@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/base.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,9 +15,10 @@
 	height: 60px;
 	margin: 5px;
 }
-.headpicture img{
-	width:100%;
-	height:100%;
+
+.headpicture img {
+	width: 100%;
+	height: 100%;
 	border-radius: 50%;
 }
 </style>
@@ -37,8 +39,8 @@
 		<div class="row">
 			<div class="col-md-12">
 				<!-- BEGIN FORM-->
-				<form action="view/mime/userinfo" method="post" enctype="multipart/form-data"
-					class="form-horizontal">
+				<form action="view/mime/userinfo" method="post"
+					enctype="multipart/form-data" class="form-horizontal">
 					<div class="form-body">
 						<h3 class="form-section">个人信息</h3>
 						<div id="topline" class="form-group">
@@ -57,7 +59,7 @@
 								class="required"> * </span></label>
 							<div class="col-md-4">
 								<input type="text" class="form-control" name="username"
-									value="${user.username }" placeholder="请输入用户名" /> <span
+									value="${employee.name }" placeholder="请输入用户名" /> <span
 									class="help-block"> 用户登录名 ，数字字母组成长度在5-20之间</span>
 							</div>
 						</div>
@@ -65,27 +67,25 @@
 							<label class="control-label col-md-3">邮箱：</label>
 							<div class="col-md-4">
 								<input type="email" class="form-control" name="email"
-									value="${user.email }" placeholder="请输入Email"> <span
+									value="${employee.email }" placeholder="请输入Email"> <span
 									class="help-block"> 请输入正确的邮箱，可以用来找回密码使用 </span>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-md-3">昵称：</label>
-							<div class="col-md-4">
-								<input type="text" class="form-control" name="nickname"
-									value="${user.nickname }" placeholder="请输入Email" />
-							</div>
-						</div>
-
-						<div class="form-group">
 							<label class="col-md-3 control-label">性别：</label>
 							<div class="col-md-9">
 								<div class="radio-list">
-									<label class="radio-inline"> <input type="radio"
-										name="sex" value="1" checked="checked">男
-									</label> <label class="radio-inline"> <input type="radio"
-										name="sex" value="2">女
-									</label>
+									<c:if test="${employee.sex=='1'}">
+										<label class="radio-inline"> 
+										<input type="radio"
+											name="sex" value="1" checked="checked">男
+										</label>
+									</c:if>
+									<c:if test="${employee.sex=='0'}">
+										<label class="radio-inline"> 
+										<input type="radio" name="sex" checked="checked">女
+										</label>
+									</c:if>
 								</div>
 							</div>
 						</div>
@@ -128,6 +128,6 @@
 		</div>
 	</div>
 	<script type="text/javascript" src="resource/js/jquery.min.js"></script>
-	<script type="text/javascript" src="resource/js/upload.js"></script>
+	<script type="text/javascript" src="resource/js/ajaxUserInfo.js"></script>
 </body>
 </html>

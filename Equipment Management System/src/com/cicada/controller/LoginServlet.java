@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 
 import com.cicada.dao.UserDao;
+import com.cicada.entity.User;
 import com.cicada.util.SqlSessionFactoryUtil;
 
 @WebServlet("/login")
@@ -41,15 +42,14 @@ public class LoginServlet extends HttpServlet {
 		//mybatis查询数据库
 		SqlSession sqlSession=SqlSessionFactoryUtil.getSqlSession();
 		UserDao ud=sqlSession.getMapper(UserDao.class);
-		int loginResault = ud.login(username, password);
-		System.out.println(loginResault);
-		if (loginResault == -1) {
+		User user = ud.login(username, password);
+		if (user == null) {
 			request.setAttribute("error", "账号或密码不正确。");
 			request.getRequestDispatcher("/login.jsp").forward(request, response);
 			return;
 		}
 		HttpSession session = request.getSession(true);
-		session.setAttribute("userid", loginResault);
+		session.setAttribute("user", user);
 		if (remerber == null) {
 			response.sendRedirect(request.getContextPath() + "/view/index");
 			return;

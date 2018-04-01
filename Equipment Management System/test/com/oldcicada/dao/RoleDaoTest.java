@@ -1,7 +1,5 @@
 package com.oldcicada.dao;
 
-import static org.junit.Assert.*;
-
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
@@ -16,5 +14,4 @@ public class RoleDaoTest {
 		RoleDao rd = sqlSession.getMapper(RoleDao.class);
 		System.out.println(rd.getRoleName(1));
 	}
-
 }

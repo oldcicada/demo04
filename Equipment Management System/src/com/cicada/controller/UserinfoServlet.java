@@ -11,7 +11,8 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.cicada.dao.UserDao;
+import com.cicada.dao.EmployeeDao;
+import com.cicada.entity.Employee;
 import com.cicada.entity.User;
 import com.cicada.util.SqlSessionFactoryUtil;
 
@@ -22,14 +23,11 @@ public class UserinfoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		int userid = (int) session.getAttribute("userid");
+		User user = (User)session.getAttribute("user");
 		SqlSession sqlSession = SqlSessionFactoryUtil.getSqlSession();
-		UserDao ud = sqlSession.getMapper(UserDao.class);
-		User user = ud.getUserMessage(userid);
-		if (user == null) {
-			return;
-		}
-		request.setAttribute("user", user);
+		EmployeeDao ed = sqlSession.getMapper(EmployeeDao.class);
+		Employee employee = ed.getEmployeeById(user.getEquipmentId());
+		request.setAttribute("employee", employee);
 		request.getRequestDispatcher("/WEB-INF/view/mime/userinfo.jsp").forward(request, response);
 	}
 

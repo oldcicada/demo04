@@ -5,12 +5,12 @@ import com.cicada.common.BaseEntity;
 public class User extends BaseEntity {
 	private String username;
 	private String password;
-	private String nickname;
-	private String email;
-	private String headpath;
-	private String sex;
-	private int roleid;
+	private int equipmentId;
 
+	public User() {
+		
+	}
+	
 	public String getUsername() {
 		return username;
 	}
@@ -27,44 +27,11 @@ public class User extends BaseEntity {
 		this.password = password;
 	}
 
-	public String getNickname() {
-		return nickname;
+	public int getEquipmentId() {
+		return equipmentId;
 	}
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setEquipmentId(int equipmentId) {
+		this.equipmentId = equipmentId;
 	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getHeadpath() {
-		return headpath;
-	}
-
-	public void setHeadpath(String headpath) {
-		this.headpath = headpath;
-	}
-
-	public String getSex() {
-		return sex;
-	}
-
-	public void setSex(String sex) {
-		this.sex = sex;
-	}
-
-	public int getRoleid() {
-		return roleid;
-	}
-
-	public void setRoleid(int roleid) {
-		this.roleid = roleid;
-	}
-
 }

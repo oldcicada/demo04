@@ -6,6 +6,10 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="user" type="com.cicada.entity.User"/>
+		<typeAlias alias="employee" type="com.cicada.entity.Employee"/>
+		<typeAlias alias="office" type="com.cicada.entity.Office"/>
+		<typeAlias alias="equipment" type="com.cicada.entity.Equipment"/>
+		<typeAlias alias="fault" type="com.cicada.entity.Fault"/>
 	</typeAliases>
 	
 	<!-- 数据连接配置 -->
@@ -24,5 +28,10 @@
   <mappers>
     <mapper resource="com/cicada/dao/UserMapper.xml"/>
     <mapper resource="com/cicada/dao/RoleMapper.xml"/>
+    <mapper resource="com/cicada/dao/UserRoleMapper.xml"/>
+    <mapper resource="com/cicada/dao/FaultMapper.xml"/>
+    <mapper resource="com/cicada/dao/OfficeMapper.xml"/>
+    <mapper resource="com/cicada/dao/EquipmentMapper.xml"/>
+    <mapper resource="com/cicada/dao/EmployeeMapper.xml"/>
   </mappers>
 </configuration>

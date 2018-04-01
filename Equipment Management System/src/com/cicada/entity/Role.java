@@ -2,14 +2,28 @@ package com.cicada.entity;
 
 import com.cicada.common.BaseEntity;
 
-public class Role extends BaseEntity{
-	private String rolename;
+public class Role extends BaseEntity {
 
-	public String getRolename() {
-		return rolename;
+	private String roleType;
+	private String description;
+
+	public Role() {
+
 	}
 
-	public void setRolename(String rolename) {
-		this.rolename = rolename;
+	public String getRoleType() {
+		return roleType;
+	}
+
+	public void setRoleType(String roleType) {
+		this.roleType = roleType;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }

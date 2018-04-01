@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
  * 用Map<String,Integer>存统计的数据。整个网站只需要一个Map即可！
  * 使用IP为key，访问次数为value
  * */
-@WebFilter("/*")
+@WebFilter("/WEB-INF/view/index")
 public class IPCountFilter implements Filter {
 	// web容器启动时创建的对象，代表当前web服务
 	private ServletContext context;
