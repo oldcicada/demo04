@@ -71,7 +71,7 @@
 				<c:forEach varStatus="st" items="${employees }" var="emp">
 						<tr>
 							<td>${st.index+1 }</td>
-							<td>${emp.name }</td>
+							<td>${emp.login_name}</td>
 							<td>${emp.email }</td>
 							<td>
 							<c:if test="${emp.sex=='0'}">女</c:if>

@@ -12,6 +12,5 @@ public class RoleDaoTest {
 	public void getRoleNameTest() {
 		SqlSession sqlSession = SqlSessionFactoryUtil.getSqlSession();
 		RoleDao rd = sqlSession.getMapper(RoleDao.class);
-		System.out.println(rd.getRoleName(1));
 	}
 }

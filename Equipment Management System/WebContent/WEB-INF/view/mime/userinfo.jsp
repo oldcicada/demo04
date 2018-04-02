@@ -59,7 +59,7 @@
 								class="required"> * </span></label>
 							<div class="col-md-4">
 								<input type="text" class="form-control" name="username"
-									value="${employee.name }" placeholder="请输入用户名" /> <span
+									value="${employee.login_name }" placeholder="请输入用户名" /> <span
 									class="help-block"> 用户登录名 ，数字字母组成长度在5-20之间</span>
 							</div>
 						</div>

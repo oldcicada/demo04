@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.cicada.dao.EmployeeDao;
-import com.cicada.entity.Employee;
+import com.cicada.dao.UserDao;
+import com.cicada.entity.User;
 import com.cicada.util.SqlSessionFactoryUtil;
 
 @WebServlet("/view/sys/employeeList")
@@ -21,9 +21,9 @@ public class EmployeeListServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		SqlSession sqlSession = SqlSessionFactoryUtil.getSqlSession();
-		EmployeeDao ed = sqlSession.getMapper(EmployeeDao.class);
-		List<Employee> employees = ed.getAllEmployee();
-		request.setAttribute("employees", employees);
+		UserDao ud = sqlSession.getMapper(UserDao.class);
+		List<User> list = ud.getAllUser();
+		request.setAttribute("employees", list);
 		request.getRequestDispatcher("/WEB-INF/view/sys/employeeList.jsp").forward(request, response);
 	}
 
