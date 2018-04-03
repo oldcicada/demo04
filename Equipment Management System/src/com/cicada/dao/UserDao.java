@@ -11,4 +11,6 @@ public interface UserDao {
 	public User login(@Param("login_name") String loginName, @Param("password") String password);
 	//获取所有用户信息
 	public List<User> getAllUser();
+	//登陆成功，修改最后登录时间和登录IP地址 
+	public void updateLoginMessage(@Param("login_ip") String login_ip, @Param("id")int id);
 }

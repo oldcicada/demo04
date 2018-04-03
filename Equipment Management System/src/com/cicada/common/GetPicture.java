@@ -1,7 +1,7 @@
 package com.cicada.common;
 
 public class GetPicture {
-	private int[][] getBlockData() {
+	/*private int[][] getBlockData() {
         int[][] data = new int[targetLength][targetWidth];
         double x2 = targetLength-circleR-2;
         //随机生成圆的位置
@@ -52,5 +52,5 @@ public class GetPicture {
                 } 
             }
         }
-    }
+    }*/
 }

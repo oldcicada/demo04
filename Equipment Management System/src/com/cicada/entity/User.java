@@ -71,7 +71,6 @@ public class User extends BaseEntity {
 		this.type = type;
 	}
 
-
 	public String getFounder() {
 		return founder;
 	}

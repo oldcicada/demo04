@@ -42,8 +42,7 @@
 							<div id="picture">
 								<img src="resource\img\pic0.png" />
 							</div>
-							<div id="slider" class="slider">
-							</div>
+							<!-- <div id="slider" class="slider"></div> -->
 						</div>
 					</div>
 				</div>

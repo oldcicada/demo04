@@ -1,6 +1,7 @@
 package com.cicada.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import com.cicada.common.BaseEntity;
 
@@ -20,6 +21,16 @@ public class Menu extends BaseEntity {
 	private Date update_time;
 	private String description;
 	private String deleted;
+	private List<Menu> menus;
+	
+
+	public List<Menu> getMenus() {
+		return menus;
+	}
+
+	public void setMenus(List<Menu> menus) {
+		this.menus = menus;
+	}
 
 	public Menu() {
 

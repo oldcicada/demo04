@@ -3,4 +3,11 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cicada.dao.MenuDao">
+<select id="getMenuList" resultType="menu" parameterType="_int">
+SELECT menu.`id`,`parent_menu`,`parent_menu_ids`,`name`,`sort`,`link_address`,`aim_window`,`icon`,
+  `view`,`code`, `founder`,`creation_time`,`updater`,`update_time`,`description`,`deleted` FROM `menu` 
+LEFT JOIN `role_menu`  ON menu.`id`=role_menu.`menu_id`
+LEFT JOIN `user_role` ON role_menu.`rold_id`=user_role.`role_id`
+WHERE menu.`deleted`=0 AND user_role.`user_id`=#{id}
+</select>
 </mapper>
