@@ -62,7 +62,6 @@
 						<tr>
 							<th class="text-center">编号</th>
 							<th class="text-center">姓名</th>
-							<th class="text-center">登录名</th>
 							<th class="text-center">邮箱</th>
 							<th class="text-center">性别</th>
 							<th class="text-center">操作</th>
@@ -72,10 +71,12 @@
 				<c:forEach varStatus="st" items="${employees }" var="emp">
 						<tr>
 							<td>${st.index+1 }</td>
-							<td>${emp.nickname }</td>
-							<td>${emp.username }</td>
+							<td>${emp.login_name}</td>
 							<td>${emp.email }</td>
-							<td>${emp.sex }</td>
+							<td>
+							<c:if test="${emp.sex=='0'}">女</c:if>
+							<c:if test="${emp.sex=='1'}">男</c:if>
+							</td>
 							<td class="text-center"><a href="view/sys/employeeForm?&{emp.id}">编辑</a> <a href="#">删除</a>
 								<a href="#">密码重置</a></td>
 						</tr>
