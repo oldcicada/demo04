@@ -13,6 +13,7 @@ import com.cicada.util.SqlSessionFactoryUtil;
 public class MenuServiceImpl implements MenuService{
 	private SqlSession sqlSession = null;
 	private MenuDao md = null;
+	//根据id查询用户的菜单列表
 	public List<Menu> getMenuList(int id) {
 		sqlSession=SqlSessionFactoryUtil.getSqlSession();
 		md = sqlSession.getMapper(MenuDao.class);
@@ -22,18 +23,19 @@ public class MenuServiceImpl implements MenuService{
 		sqlSession.close();
 		return list;
 	}
+	//递归查找子菜单
 	private List<Menu>  findChildren(List<Menu> menuList,int pid ) {
 		List<Menu> list=new ArrayList<Menu>();
 		if(menuList != null){
-			for (Menu menu : list) {
+			for (Menu menu : menuList){
 				if(menu.getParent_menu().equals(pid+"")){
-					List<Menu> children=findChildren(list,menu.getId());
+					List<Menu> children=findChildren(menuList,menu.getId());
 					menu.setMenus(children);
+					//System.out.println(menu.getName()+"  容量："+menu.getMenus().size());
 					list.add(menu);
 				}
 			}
 		}
 		return list;
 	}
-	
 }

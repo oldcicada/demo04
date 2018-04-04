@@ -4,6 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <!--主配置文件 -->
 <configuration>
+<!-- 加载配置文件 -->
+	<properties resource="db.properties"></properties>
+	<!-- 取别名  -->
 	<typeAliases>
 		<typeAlias alias="user" type="com.cicada.entity.User" />
 		<typeAlias alias="room" type="com.cicada.entity.Room" />
@@ -20,11 +23,11 @@
 		<environment id="development">
 			<transactionManager type="JDBC" /><!-- 事务类型 -->
 			<dataSource type="POOLED"><!-- 连接池 -->
-				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="driver" value="${driverClassName}" />
 				<property name="url"
-					value="jdbc:mysql://127.0.0.1:3306/ems?characterEncoding=utf-8" />
-				<property name="username" value="root" />
-				<property name="password" value="123123" />
+					value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
 			</dataSource>
 		</environment>
 	</environments>

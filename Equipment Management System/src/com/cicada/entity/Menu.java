@@ -156,4 +156,12 @@ public class Menu extends BaseEntity {
 		this.update_time = update_time;
 	}
 
+	@Override
+	public String toString() {
+		return "Menu [parent_menu=" + parent_menu + ", parent_menu_ids=" + parent_menu_ids + ", name=" + name
+				+ ", sort=" + sort + ", link_address=" + link_address + ", aim_window=" + aim_window + ", icon=" + icon
+				+ ", view=" + view + ", code=" + code + ", founder=" + founder + ", creation_time=" + creation_time
+				+ ", updater=" + updater + ", update_time=" + update_time + ", description=" + description
+				+ ", deleted=" + deleted + ", menus=" + menus + "]";
+	}
 }
