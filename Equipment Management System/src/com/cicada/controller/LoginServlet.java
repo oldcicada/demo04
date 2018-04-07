@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.cicada.entity.User;
 import com.cicada.service.UserService;
 import com.cicada.serviceImpl.UserServiceImpl;
+import com.cicada.util.Md5;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
@@ -39,9 +40,19 @@ public class LoginServlet extends HttpServlet {
 		String username = request.getParameter("number").trim();
 		String password = request.getParameter("password").trim();
 		String[] remerber = request.getParameterValues("remerber");
+		//String pictureCode = request.getParameter("pictureCode");
+		
+		/*//判断验证码是否正确
+		if(!ValidateCodeUtil.validate(request, pictureCode)) {
+			request.setAttribute("error", "请输入正确的验证码。");
+			request.getRequestDispatcher("/login.jsp").forward(request, response);
+			return;
+		}*/
 
 		// mybatis查询数据库获得user信息
 		UserService us = new UserServiceImpl();
+		//将密码123456进行加密
+		password=Md5.MD5(password);
 		User user = us.login(username, password);
 		if (user == null) {
 			request.setAttribute("error", "账号或密码不正确。");

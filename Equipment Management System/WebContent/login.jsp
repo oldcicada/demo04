@@ -1,16 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="base.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
+<%@ include file="base.jsp"%>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>login</title>
 <link rel="stylesheet" href="resource/css/bootstrap.min.css" />
-<link rel="stylesheet" href="resource/css/jquery.slider.css" />
 <link rel="stylesheet" type="text/css" href="resource/css/login.css" />
 </head>
 <body>
@@ -32,18 +31,16 @@
 						<input type="password" class="form-control" placeholder="密码"
 							name="password" required="required">
 					</div>
+					<div class="form-group">
+						<div class="picture">
+							<input type="text"  class="form-control" name="pictureCode" placeholder="请输入验证码">
+							<img id="picture" src="validateCodeUtil"/>
+						</div>
+					</div>
 					<div class="checkbox">
 						<label><input type="checkbox" name="remerber" value="true"
 							checked="checked"> 记住我</label> <span id="forget"><a
 							href="javascript:void(0)">忘记密码？</a></span>
-					</div>
-					<div class="form-group">
-						<div class="demo">
-							<div id="picture">
-								<img src="resource\img\pic0.png" />
-							</div>
-							<!-- <div id="slider" class="slider"></div> -->
-						</div>
 					</div>
 				</div>
 				<div class="clearfix"></div>
@@ -74,8 +71,6 @@
 	</div>
 	<script src="resource/js/jquery.min.js" type="text/javascript"
 		charset="utf-8"></script>
-		<script src="resource/js/jquery.slider.min.js" type="text/javascript"
-		charset="utf-8"></script>
 	<script type="text/javascript">
 		$(function() {
 			$("#forget").click(function() {
@@ -86,8 +81,11 @@
 				$(".body").first().show();
 				$(".forget").hide()
 			});
+			$('#picture').on("click",function(){
+				//连接变化浏览器才再次请求		
+				$(this).attr("src",'validateCodeUtil?'+new Date().getTime());
+			});
 		});
-		$("#slider").slider();
 	</script>
 </body>
 </html>

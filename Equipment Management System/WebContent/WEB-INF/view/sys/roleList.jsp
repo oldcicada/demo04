@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/base.jsp"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
+<%@ include file="/base.jsp"%>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css"
 	href="resource/css/bootstrap.min.css" />
@@ -63,13 +64,15 @@
 						</tr>
 					</thead>
 					<tbody>
+					<c:forEach items="${roleList }" varStatus="st" var="list">
 						<tr>
-							<td>1</td>
-							<td>超级管理员</td>
-							<td>管理系统的所有操作</td>
+							<td>${st.index+1}</td>
+							<td>${list.name}</td>
+							<td>${list.description}</td>
 							<td class="text-center"><a href="#">编辑</a> <a href="#">删除</a>
 							</td>
 						</tr>
+					</c:forEach>
 					</tbody>
 				</table>
 			</div>

@@ -106,7 +106,6 @@
 									</div>
 									<div class="checker disabled disabled"
 										id="uniform-inlineCheckbox23">
-										<!-- disabled="disabled" -->
 										<span> <input type="checkbox" id="inlineCheckbox23"
 											value="option3" disabled="disabled">
 										</span><label class="checkbox-inline"> 维修人员 </label>
@@ -128,6 +127,5 @@
 		</div>
 	</div>
 	<script type="text/javascript" src="resource/js/jquery.min.js"></script>
-	<script type="text/javascript" src="resource/js/ajaxUserInfo.js"></script>
 </body>
 </html>

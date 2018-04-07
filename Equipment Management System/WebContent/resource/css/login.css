@@ -28,35 +28,10 @@ body {
 .body-main {
 	padding: 0 25px;
 }
-/*滑块开始  */
-#picture{
-	width:190px;
-	height:190px;
-	border:1px solid #b5c8e2ad;
-	padding:4px;
-	background:#b5c8e2ad;
-	border-radius:6px;
-	margin:0 auto;
-	position: absolute;
-	top:-190px;
-	left:-2px;
- 	display:none; 
+.picture input{
+	width:200px;
+	float:left;
 }
-.demo{
-		width:200px;
-		height: 36px;
-		position:relative;
-		float:right;
-		border: 1px dashed #fff;
-		border-radius: 4px;
-		box-sizing: border-box;
-		position: relative;
-	}
-.slider{
-		width:200px;
-		height: 34px;
-	}
-/*滑块结束  */
 .form-control {
 	background-color: #DDE3EC;
 	height: 40px;
