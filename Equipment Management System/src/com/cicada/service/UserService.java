@@ -2,6 +2,7 @@ package com.cicada.service;
 
 import java.util.List;
 
+import com.cicada.common.PageDto;
 import com.cicada.entity.User;
 
 public interface UserService {
@@ -11,4 +12,6 @@ public interface UserService {
 	public List<User> getAllUser();
 	//登陆成功，修改最后登录时间和登录IP地址 
 	public void updateLoginMessage(String login_ip,int id);
+	//分页查询用户列表
+	public PageDto<User> queryUserPage(int pageIndex, int pageSize, String login_name, String name);
 }

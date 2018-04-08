@@ -1,7 +1,6 @@
 package com.cicada.controller.sys;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,38 +8,30 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.ibatis.session.SqlSession;
-
-import com.cicada.dao.UserDao;
+import com.alibaba.fastjson.JSON;
+import com.cicada.common.PageDto;
 import com.cicada.entity.User;
-import com.cicada.util.SqlSessionFactoryUtil;
+import com.cicada.service.UserService;
+import com.cicada.serviceImpl.UserServiceImpl;
 
 @WebServlet("/view/sys/employeeList")
 public class EmployeeListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		SqlSession sqlSession = SqlSessionFactoryUtil.getSqlSession();
-		UserDao ud = sqlSession.getMapper(UserDao.class);
-		List<User> list = ud.getAllUser();
-		request.setAttribute("employees", list);
 		request.getRequestDispatcher("/WEB-INF/view/sys/employeeList.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*String username = request.getParameter("username").trim();
-		String nickname = request.getParameter("nickname").trim();
-		SqlSession sqlSession = SqlSessionFactoryUtil.getSqlSession();
-		UserDao ud = sqlSession.getMapper(UserDao.class);
-		if(username==""&&nickname=="") {
-			request.setAttribute("error", "请输入登录名或者姓名！");
-		}else {
-			List<User> employees = ud.queryAllUserMessage(username, nickname);
-			if(employees.isEmpty()) {
-				request.setAttribute("error", "查无此人！");
-			}
-			request.setAttribute("employees", employees);
-			request.getRequestDispatcher("/WEB-INF/view/sys/employeeList.jsp").forward(request, response);
-		}*/
+		int pageIndex=Integer.parseInt(request.getParameter("pageIndex").trim());
+		int pageSize=Integer.parseInt(request.getParameter("pageSize").trim());
+		String login_name =request.getParameter("login_name").trim();
+		String name =request.getParameter("name").trim();
+		//System.out.println("login_name:"+login_name+"--"+"name"+name+"--pageIndex:"+pageIndex+"--pageSize:"+pageSize);
+		
+		//查询出数据发送给前端页面处理
+		UserService us=new UserServiceImpl();
+		PageDto<User> pageDto=us.queryUserPage(pageIndex, pageSize, login_name, name);
+		response.getWriter().print(JSON.toJSON(pageDto));
 	}
 }

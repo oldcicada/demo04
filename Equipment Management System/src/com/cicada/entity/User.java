@@ -6,6 +6,7 @@ import com.cicada.common.BaseEntity;
 
 public class User extends BaseEntity {
 	private String login_name;
+	private String name;
 	private String password;
 	private String number;
 	private String sex;
@@ -22,6 +23,14 @@ public class User extends BaseEntity {
 	private Date update_time;
 	private String description;
 	private String deleted;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public String getPassword() {
 		return password;

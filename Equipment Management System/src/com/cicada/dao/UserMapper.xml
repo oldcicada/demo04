@@ -10,6 +10,29 @@
 	select * from user
   </select>
   <update id="updateLoginMessage">
-  	UPDATE USER SET login_ip=#{login_ip},login_time=now(),login_state='1' where id=#{id}
+  	UPDATE USER SET login_ip=#{login_ip},login_time=now() where id=#{id}
   </update>
+  <select id="queryUserPage" parameterType="map" resultType="user">
+  	select * from
+		(select id,name,login_name,email,sex from user where deleted=0 
+		<if test="#{login_name} != null">
+			and login_name like #{login_name}
+		</if>
+		<if test="#{name} != null">
+			and name like #{name}
+		</if>
+		)u limit #{start},#{end}
+  </select>
+  <select id="queryUserCount" parameterType="map" resultType="int">
+  	SELECT COUNT(1) FROM
+		(SELECT id FROM USER WHERE deleted=0 
+			<if test="#{login_name} != null">
+				and login_name like #{login_name}
+			</if>
+			<if test="#{name} != null">
+				and name like #{name}
+			</if>
+		)u
+	</select>
+  
 </mapper>

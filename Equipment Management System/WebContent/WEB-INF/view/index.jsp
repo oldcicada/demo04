@@ -16,7 +16,7 @@
 <body>
 	<div class="header container-fluid">
 		<div class="logo">
-			<a href="index.html"> <img src="resource\img\logo.png" alt="logo" />
+			<a href="index.html"><img src="resource/img/logo.png" alt="logo" />
 			</a>
 		</div>
 		<div class="title">
@@ -98,9 +98,11 @@
 			$("img").click(function() {
 				if ($(".left").width() == 35) {
 					$(".left").width(220);
+					$(".panel a").css("margin-left","10px");
 					$(".iframe").css("margin-left", "220px");
 				} else {
 					$(".left").width(35);
+					$(".panel a").css("margin-left","-10px");
 					$(".iframe").css("margin-left", "40px");
 				}
 			});

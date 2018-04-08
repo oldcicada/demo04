@@ -1,6 +1,7 @@
 package com.cicada.controller;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,7 +22,7 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//记住密码
+		// 记住密码
 		Cookie[] cookies = request.getCookies();
 		if (cookies != null) {
 			for (Cookie cookie : cookies) {
@@ -40,31 +41,31 @@ public class LoginServlet extends HttpServlet {
 		String username = request.getParameter("number").trim();
 		String password = request.getParameter("password").trim();
 		String[] remerber = request.getParameterValues("remerber");
-		//String pictureCode = request.getParameter("pictureCode");
-		
-		/*//判断验证码是否正确
-		if(!ValidateCodeUtil.validate(request, pictureCode)) {
-			request.setAttribute("error", "请输入正确的验证码。");
-			request.getRequestDispatcher("/login.jsp").forward(request, response);
-			return;
-		}*/
+		// String pictureCode = request.getParameter("pictureCode");
+
+		/*
+		 * //判断验证码是否正确 if(!ValidateCodeUtil.validate(request, pictureCode)) {
+		 * request.setAttribute("error", "请输入正确的验证码。");
+		 * request.getRequestDispatcher("/login.jsp").forward(request, response);
+		 * return; }
+		 */
 
 		// mybatis查询数据库获得user信息
 		UserService us = new UserServiceImpl();
-		//将密码123456进行加密
-		password=Md5.MD5(password);
+		// 将密码123456进行加密
+		password = Md5.MD5(password);
 		User user = us.login(username, password);
 		if (user == null) {
 			request.setAttribute("error", "账号或密码不正确。");
 			request.getRequestDispatcher("/login.jsp").forward(request, response);
 			return;
 		}
-		/**
-		 * 登陆成功修改最后登录时间和IP;(未完成)
-		 * user.setLogin_ip(request.getServerName());
-		 * user.setLogin_time(new Date()); user.setLogin_state("1");
-		 * us.updateLoginMessage(user.getLogin_ip(),user.getId());
-		 */
+
+		// 登陆成功修改最后登录时间和IP;
+		user.setLogin_ip(request.getServerName());
+		user.setLogin_time(new Date());
+		us.updateLoginMessage(user.getLogin_ip(), user.getId());
+
 		// session存储user信息
 		System.out.println(user.toString());
 		HttpSession session = request.getSession(true);
