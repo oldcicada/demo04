@@ -61,5 +61,10 @@ public class Dictionary extends BaseEntity{
 	public void setDeleted(String deleted) {
 		this.deleted = deleted;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Dictionary [value=" + value + ", tag=" + tag + ", type=" + type + ", description=" + description
+				+ ", sort=" + sort + ", deleted=" + deleted + "]";
+	}
 }

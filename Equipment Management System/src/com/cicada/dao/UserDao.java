@@ -23,4 +23,10 @@ public interface UserDao {
 	 * @param map
 	 */
 	public void resetPass(Map<Object, Object> map);
+	// 根据id删除用户信息
+	public void deleteUserById(int id);
+	//根据用户id获得用户信息
+	public User getUserById(int id);
+	//修改用户信息
+	public void UpdateUserMessage(Map<Object, Object> map);
 }

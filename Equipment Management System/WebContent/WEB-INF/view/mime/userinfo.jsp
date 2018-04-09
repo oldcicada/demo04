@@ -44,7 +44,7 @@
 					<div class="form-body">
 						<h3 class="form-section">个人信息</h3>
 						<div id="topline" class="form-group">
-							<label class="col-md-3 control-label">头像：</label>
+							<label class="col-md-3 control-label">头 &nbsp;&nbsp;像：</label>
 							<div class="col-md-9">
 								<div class="headpicture"
 									style="margin: 5px; border-radius: 50%;">
@@ -55,8 +55,7 @@
 							<div class="clearfix"></div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-md-3">用户名：<span
-								class="required"> * </span></label>
+							<label class="control-label col-md-3">用户名：</label>
 							<div class="col-md-4">
 								<input type="text" class="form-control" name="username"
 									value="${employee.login_name }" placeholder="请输入用户名" /> <span
@@ -64,7 +63,7 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-md-3">邮箱：</label>
+							<label class="col-md-3 control-label">邮&nbsp;&nbsp;箱：</label>
 							<div class="col-md-4">
 								<input type="email" class="form-control" name="email"
 									value="${employee.email }" placeholder="请输入Email"> <span
@@ -72,25 +71,20 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-3 control-label">性别：</label>
+							<label class="col-md-3 control-label">性 &nbsp;&nbsp;别：</label>
 							<div class="col-md-9">
 								<div class="radio-list">
-									<c:if test="${employee.sex=='1'}">
-										<label class="radio-inline"> 
-										<input type="radio"
-											name="sex" value="1" checked="checked">男
-										</label>
-									</c:if>
-									<c:if test="${employee.sex=='0'}">
-										<label class="radio-inline"> 
-										<input type="radio" name="sex" checked="checked">女
-										</label>
-									</c:if>
+									<c:forEach items="${requestScope.sexs}" var="sex">
+										<div class="radio">
+											<input type="radio" name="sex" value="${sex.value }">
+										</div>
+										<label class="radio-inline">${sex.label } </label>
+									</c:forEach>
 								</div>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-3 control-label">角色：</label>
+							<label class="col-md-3 control-label">角 &nbsp;&nbsp;色：</label>
 							<div class="col-md-9">
 								<div class="checkbox-list">
 									<div class="checker disabled" id="uniform-inlineCheckbox21">

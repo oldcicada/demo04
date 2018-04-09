@@ -1,6 +1,7 @@
 package com.cicada.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.cicada.common.PageDto;
 import com.cicada.entity.User;
@@ -14,4 +15,10 @@ public interface UserService {
 	public void updateLoginMessage(String login_ip,int id);
 	//分页查询用户列表
 	public PageDto<User> queryUserPage(int pageIndex, int pageSize, String login_name, String name);
+	//根据id删除用户信息
+	public void deleteUserById(int id);
+	//根据用户id获得用户信息
+	public User getUserById(int id);
+	//修改用户信息
+	public void UpdateUserMessage(Map<Object, Object> map);
 }

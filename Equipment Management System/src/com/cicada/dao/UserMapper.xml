@@ -13,26 +13,33 @@
   	UPDATE USER SET login_ip=#{login_ip},login_time=now() where id=#{id}
   </update>
   <select id="queryUserPage" parameterType="map" resultType="user">
-  	select * from
-		(select id,name,login_name,email,sex from user where deleted=0 
+		select id,name,login_name,email,sex from user where deleted=0 
 		<if test="#{login_name} != null">
 			and login_name like #{login_name}
 		</if>
 		<if test="#{name} != null">
 			and name like #{name}
 		</if>
-		)u limit #{start},#{end}
+		limit #{start},#{end}
   </select>
   <select id="queryUserCount" parameterType="map" resultType="int">
-  	SELECT COUNT(1) FROM
-		(SELECT id FROM USER WHERE deleted=0 
+		SELECT count(1) from user WHERE deleted=0 
 			<if test="#{login_name} != null">
 				and login_name like #{login_name}
 			</if>
 			<if test="#{name} != null">
 				and name like #{name}
 			</if>
-		)u
 	</select>
-  
+  <update id="deleteUserById" parameterType="int">
+  	UPDATE USER SET deleted="1" where id=#{id}
+  </update>
+  <select id="getUserById" parameterType="int" resultType="user">
+SELECT  `id`,`login_name`,`password`,`number`,`name`,`sex`,`email`,`phone`,`type`,`head_address`,`login_ip`,`login_time`,
+  `login_state`,`founder`, `creation_time`,`updater`,`update_time`,`description`,`deleted` 
+FROM  user WHERE id=#{id} AND deleted=0
+  </select>
+   <update id="UpdateUserMessage" parameterType="map">
+  	UPDATE USER SET login_name=#{login_name},name=#{name},email=#{email},phone=#{phone} where id=#{id}
+  </update>
 </mapper>

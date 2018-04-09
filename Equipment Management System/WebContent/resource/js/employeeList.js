@@ -71,15 +71,15 @@ function queryPage(){
 						+"</td><td>"+list[i].name
 						+"</td><td>"+list[i].email
 						+"</td><td>" +list[i].sex
-						+"</td><td class='text-center'><a href='view/sys/employeeForm?&{emp.id}'>编辑</a> "
-						+"<a href='#'>删除</a> "
+						+"</td><td class='text-center'><a href='view/sys/employeeEdit?id="+list[i].id+"'>编辑</a> "
+						+"<a href='view/sys/employeeDelete?id="+list[i].id+"'>删除</a> "
 						+"<a href='#'>密码重置</a></td></tr>";
 						$("#content").append(content);
 					}
 				}
 				
 				if(data.list.length == 0){
-					$("#pagecontrol").css("display","none");
+					$("#pageControl").css('display','none');
 				}
 		$(".resetPass").click(resetPass);
 		pageTotal=data.pageTotal;

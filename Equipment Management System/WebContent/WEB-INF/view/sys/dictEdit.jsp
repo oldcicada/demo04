@@ -25,40 +25,39 @@
 			</div>
 			<!-- END PAGE HEADER-->
 			<ul class="nav nav-tabs">
-				<li >
-					<a href="view/sys/dictList" >
-					字典列表 </a>
-				</li>
 				<li class="active" >
-					<a href="view/sys/dictForm">
-					字典信息 </a>
+					<a>
+					字典信息修改 </a>
 				</li>
 			</ul>
 			<!-- BEGIN PAGE CONTENT-->
 			<div class="row">
 				<div class="col-md-8">
 							<!-- BEGIN FORM-->
-							<form action="view/sys/dictForm" method="post" style="padding: 20px;">
+							<form action="view/sys/dictEdit" method="post" style="padding: 20px;">
 								<div class="form-body">
+									<div class="form-group" style="display:none">
+										<input type="text" class="form-control" name="id" value="${dictionary.id }"/>
+									</div>
 									<div class="form-group">
 										<label>字典分类：</label>
-										<input type="text" class="form-control" name="type" placeholder="请输入字典分类" required="required"/>
+										<input type="text" class="form-control" name="type" placeholder="请输入字典分类" value="${dictionary.type }"/>
 									</div>
 									<div class="form-group">
 										<label >字典简称：</label>
-										<input type="text" class="form-control" name="tag" placeholder="字典简称" required="required"/>
+										<input type="text" class="form-control" name="tag" placeholder="字典简称" value="${dictionary.tag}"/>
 									</div>
 									<div class="form-group">
 										<label >字典值：</label>
-										<input type="text" class="form-control" name="value" placeholder="字典值" required="required"/>
+										<input type="text" class="form-control" name="value" placeholder="字典值" value="${dictionary.value }"/>
 									</div>
 									<div class="form-group">
 										<label >字典描述：</label>
-										<textarea class="form-control" rows="3" name="description"></textarea>
+										<textarea class="form-control" rows="3" name="description"> ${dictionary.description }</textarea>
 									</div>
 									<div class="form-group">
 										<label >排序号：</label>
-										<input type="text" class="form-control" name="sort" placeholder="排序号"/>
+										<input type="text" class="form-control" name="sort" placeholder="排序号" value="${dictionary.sort}"/>
 									</div>
 								</div>
 								<div class="form-actions">

@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/base.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
+<%@ include file="/base.jsp" %>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="resource/css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="resource/css/common.css"/>
@@ -36,16 +37,16 @@
 			</ul>
 			<div class="row">
 				<div class="col-md-12"> 
-						<form style="margin:20px" action="view/sys/dictList" method="post">
-							<table style="width:100%;">
+						<form style="margin:20px 200px" action="view/sys/dictList" method="post">
+							<table>
 								<tr>
 									<td style="text-align: right;padding: 10px;"><label class="control-label">字典分类：</label></td>
 									<td>
-										<input type="text" class="form-control" name="dictType" placeholder="字典分类"/>
+										<input type="text" class="form-control" name="type" placeholder="字典分类"/>
 									</td>
 									<td style="text-align: right;padding: 10px;"><label class="control-label">字典简称：</label></td>
-									<td><input type="text" class="form-control" name="userName" placeholder="请输入字典简称"/></td>
-									<td>
+									<td><input type="text" class="form-control" name="tag" placeholder="请输入字典简称"/></td>
+									<td style="text-align: right;padding: 10px;">
 										<button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i>查询</button>
 										<button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-refresh"></i>重置</button>
 									</td>
@@ -70,76 +71,19 @@
 								</tr>
 							</thead>
 							<tbody>
+							<c:forEach items="${dictionaryList }" var="list">
 								<tr>
-									<td>男</td>
-									<td>1</td>
-									<td>sex</td>
-									<td>性别</td>
+									<td>${list.tag }</td>
+									<td>${list.value }</td>
+									<td>${list.type }</td>
+									<td>${list.description }</td>
 									<td class="text-center">
-										<a href="#">编辑</a>
-										<a href="#">删除</a>
+										<a href="view/sys/dictEdit?id=${list.id}">编辑</a>
+										<a href="view/sys/dictDelete?id=${list.id}">删除</a>
 									</td>
-								</tr>
-								<tr>
-									<td>女</td>
-									<td>2</td>
-									<td>sex</td>
-									<td>性别</td>
-									<td class="text-center">
-										<a href="#">编辑</a>
-										<a href="#">删除</a>
-									</td>
-								</tr>
-								<tr>
-									<td>正常</td>
-									<td>1</td>
-									<td>setStatus</td>
-									<td>设备状态</td>
-									<td class="text-center">
-										<a href="#">编辑</a>
-										<a href="#">删除</a>
-									</td>
-								</tr>
-								<tr>
-									<td>故障</td>
-									<td>2</td>
-									<td>setStatus</td>
-									<td>设备状态</td>
-									<td class="text-center">
-										<a href="#">编辑</a>
-										<a href="#">删除</a>
-									</td>
-								</tr>
-								<tr>
-									<td>正在维修</td>
-									<td>3</td>
-									<td>equipStatus</td>
-									<td>设备状态</td>
-									<td class="text-center">
-										<a href="#">设备</a>
-										<a href="#">删除</a>
-									</td>
-								</tr>
+							</c:forEach>
 							</tbody>
 						</table>
-					</div>
-					<div class="row">
-						<div class="col-md-5 col-sm-12">
-							<div class="dataTables_info" style="padding-top: 8px;" role="status" aria-live="polite">显示 1 到 10  共 25 记录</div>
-						</div>
-						<div class="col-md-7 col-sm-12">
-							<div style="float: right;margin: 0px;height: 40px;">
-								<ul class="pagination">
-									<li class="prev disabled"><a href="#" title="首页"><i class="glyphicon glyphicon-menu-left"></i></a></li>
-									<li class="prev disabled"><a href="#" title="上一页"><i class="glyphicon glyphicon-menu-left"></i><i class="glyphicon glyphicon-menu-left"></i></a></li>
-									<li class="active"><a href="#">1</a></li><li><a href="#">2</a></li>
-									<li><a href="#">3</a></li><li><a href="#">4</a></li>
-									<li><a href="#">5</a></li>
-									<li class="next"><a href="#" title="下一页"><i class="glyphicon glyphicon-menu-right"></i></a></li>
-									<li class="next"><a href="#" title="尾页"><i class="glyphicon glyphicon-menu-right"></i><i class="glyphicon glyphicon-menu-right"></i></a></li>
-								</ul>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
