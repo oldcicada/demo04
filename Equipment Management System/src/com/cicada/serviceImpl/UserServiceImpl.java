@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
 		PageDto<User> pageDto = new PageDto<User>();
 		Map<Object, Object> map = new HashMap<Object, Object>();
 		map.put("start", (pageIndex - 1) * pageSize);
-		map.put("end", pageIndex * pageSize);
+		map.put("end", pageSize);
 		map.put("login_name", "%" + login_name + "%");
 		map.put("name", "%" + name + "%");
 
@@ -59,11 +59,9 @@ public class UserServiceImpl implements UserService {
 		// System.out.println(userList.size());
 		// 根据数据字典得到性别value
 		
-		 /* for (User user : userList) { 
+		 for (User user : userList) { 
 			  user.setSex(DictionarytUtil.queryDictionaryName("sex",user.getSex()));
-			  System.out.println(user.getSex());
-		  }*/
-		 
+		  }
 
 		pageDto.setPageIndex(pageIndex);
 		pageDto.setPageSize(pageSize);
@@ -96,10 +94,19 @@ public class UserServiceImpl implements UserService {
 	}
 
 	// 修改用户信息
-	public void UpdateUserMessage(Map<Object, Object> map) {
+	public void UpdateUserMessage(User user) {
 		sqlSession = SqlSessionFactoryUtil.getSqlSession();
 		ud = sqlSession.getMapper(UserDao.class);
-		ud.UpdateUserMessage(map);
+		ud.UpdateUserMessage(user);
+		sqlSession.commit();
+		sqlSession.close();
+	}
+
+	//重置密码
+		public void resetPass(int id) {
+		sqlSession = SqlSessionFactoryUtil.getSqlSession();
+		ud = sqlSession.getMapper(UserDao.class);
+		ud.resetPass(id);
 		sqlSession.commit();
 		sqlSession.close();
 	}

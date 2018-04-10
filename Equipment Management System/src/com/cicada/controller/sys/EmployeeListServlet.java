@@ -27,8 +27,6 @@ public class EmployeeListServlet extends HttpServlet {
 		int pageSize=Integer.parseInt(request.getParameter("pageSize").trim());
 		String login_name =request.getParameter("login_name").trim();
 		String name =request.getParameter("name").trim();
-		//System.out.println("login_name:"+login_name+"--"+"name"+name+"--pageIndex:"+pageIndex+"--pageSize:"+pageSize);
-		
 		//查询出数据发送给前端页面处理
 		UserService us=new UserServiceImpl();
 		PageDto<User> pageDto=us.queryUserPage(pageIndex, pageSize, login_name, name);

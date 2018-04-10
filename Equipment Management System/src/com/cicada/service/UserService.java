@@ -1,8 +1,6 @@
 package com.cicada.service;
 
 import java.util.List;
-import java.util.Map;
-
 import com.cicada.common.PageDto;
 import com.cicada.entity.User;
 
@@ -20,5 +18,7 @@ public interface UserService {
 	//根据用户id获得用户信息
 	public User getUserById(int id);
 	//修改用户信息
-	public void UpdateUserMessage(Map<Object, Object> map);
+	public void UpdateUserMessage(User user);
+	//重置密码
+	public void resetPass(int id);
 }

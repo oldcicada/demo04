@@ -13,15 +13,15 @@ public class DictionarytUtil {
 	
 	//根据类型保存数据字典值
 	private static Map<String, List<Dictionary>> map=new HashMap<String, List<Dictionary>>();
-	public DictionarytUtil() {
+	
+	static {
 		map=queryAllDictionary();
 	}
-	
 	/**
 	 * 根据类型查询
 	 * @param type
 	 */
-	public  static List<Dictionary> queryDictionaryByType(String type){
+	public static  List<Dictionary> queryDictionaryByType(String type){
 		return map.get(type);
 	}
 	
@@ -43,7 +43,7 @@ public class DictionarytUtil {
 	 * 查询所有字典信息
 	 * @return
 	 */
-	private Map<String, List<Dictionary>> queryAllDictionary(){
+	private static Map<String, List<Dictionary>> queryAllDictionary(){
 		DictionaryService ds=new DictionaryServiceImpl();
 		List<Dictionary> dictionaryList=ds.queryAllDictionary();
 		

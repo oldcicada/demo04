@@ -171,14 +171,15 @@ public class User extends BaseEntity {
 	public void setUpdate_time(Date update_time) {
 		this.update_time = update_time;
 	}
+	
 
-	@Override
-	public String toString() {
-		return "User [login_name=" + login_name + ", password=" + password + ", number=" + number + ", sex=" + sex
-				+ ", email=" + email + ", phone=" + phone + ", type=" + type + ", head_address=" + head_address
-				+ ", login_ip=" + login_ip + ", login_time=" + login_time + ", login_state=" + login_state
-				+ ", founder=" + founder + ", creation_time=" + creation_time + ", updater=" + updater
-				+ ", update_time=" + update_time + ", description=" + description + ", deleted=" + deleted + "]";
+	public User(int id,String login_name, String name, String sex, String email, String phone, String updater) {
+		this.id=id;
+		this.login_name = login_name;
+		this.name = name;
+		this.sex = sex;
+		this.email = email;
+		this.phone = phone;
+		this.updater = updater;
 	}
-
 }

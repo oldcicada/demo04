@@ -8,5 +8,5 @@ public interface RoleService {
 	/* 
 	 * 获得系统所有角色信息
 	*/
-		public List<Role> getRoleList();
+	public List<Role> getRoleList();
 }

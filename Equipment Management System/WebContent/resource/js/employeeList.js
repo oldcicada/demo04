@@ -11,7 +11,7 @@ $(function(){
 });
 
 function resetPass(){
-	$.post("person/sys/resetPass",{"userId":$(this).attr("data")},function(data,status){
+	$.post("view/sys/resetPass",{"userId":$(this).attr("data")},function(data,status){
 		if(status){
 			alert("密码重置成功");
 		}
@@ -73,11 +73,10 @@ function queryPage(){
 						+"</td><td>" +list[i].sex
 						+"</td><td class='text-center'><a href='view/sys/employeeEdit?id="+list[i].id+"'>编辑</a> "
 						+"<a href='view/sys/employeeDelete?id="+list[i].id+"'>删除</a> "
-						+"<a href='#'>密码重置</a></td></tr>";
+						+"<a href='javascript:void(0)' class='resetPass' data='"+list[i].id+"'>密码重置</a></td></tr>";
 						$("#content").append(content);
 					}
 				}
-				
 				if(data.list.length == 0){
 					$("#pageControl").css('display','none');
 				}

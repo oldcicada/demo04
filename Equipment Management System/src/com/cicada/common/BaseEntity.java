@@ -1,7 +1,7 @@
 package com.cicada.common;
 
 public class BaseEntity {
-private int id;
+protected int id;
 
 public int getId() {
 	return id;

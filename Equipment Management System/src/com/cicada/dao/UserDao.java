@@ -18,15 +18,12 @@ public interface UserDao {
 	public List<User> queryUserPage(Map<Object, Object> map);
 	//查询总数
 	public int queryUserCount(Map<Object, Object> map);
-	/**
-	 * 密码重置
-	 * @param map
-	 */
-	public void resetPass(Map<Object, Object> map);
+	//密码重置
+	public void resetPass(int id);
 	// 根据id删除用户信息
 	public void deleteUserById(int id);
 	//根据用户id获得用户信息
 	public User getUserById(int id);
 	//修改用户信息
-	public void UpdateUserMessage(Map<Object, Object> map);
+	public void UpdateUserMessage(User user);
 }

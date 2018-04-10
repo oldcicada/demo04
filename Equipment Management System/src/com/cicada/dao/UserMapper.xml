@@ -39,7 +39,10 @@ SELECT  `id`,`login_name`,`password`,`number`,`name`,`sex`,`email`,`phone`,`type
   `login_state`,`founder`, `creation_time`,`updater`,`update_time`,`description`,`deleted` 
 FROM  user WHERE id=#{id} AND deleted=0
   </select>
-   <update id="UpdateUserMessage" parameterType="map">
-  	UPDATE USER SET login_name=#{login_name},name=#{name},email=#{email},phone=#{phone} where id=#{id}
+   <update id="UpdateUserMessage" parameterType="user">
+  	UPDATE USER SET login_name=#{login_name},name=#{name},sex=#{sex},email=#{email},phone=#{phone},updater=#{updater},update_time=now(),description=#{description} where deleted=0 and id=#{id}
+  </update>
+  <update id="resetPass" parameterType="int">
+  	UPDATE USER SET password="e10adc3949ba59abbe56e057f20f883e" where deleted=0 and id=#{id}
   </update>
 </mapper>

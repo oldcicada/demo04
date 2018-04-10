@@ -13,6 +13,12 @@ import javax.servlet.http.HttpSession;
 import com.cicada.common.DictionarytUtil;
 import com.cicada.entity.Dictionary;
 import com.cicada.entity.User;
+import com.cicada.service.RoleService;
+import com.cicada.service.UserRoleService;
+import com.cicada.service.UserService;
+import com.cicada.serviceImpl.RoleServiceImpl;
+import com.cicada.serviceImpl.UserRoleServiceImpl;
+import com.cicada.serviceImpl.UserServiceImpl;
 
 @WebServlet("/view/mime/userinfo")
 public class UserinfoServlet extends HttpServlet {
@@ -22,20 +28,36 @@ public class UserinfoServlet extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
+		if(user==null) {
+			return;
+		}
+		int userId=user.getId();
 		request.setAttribute("user", user);
 		// 1、获取性别字典项
 		List<Dictionary> dictionary = DictionarytUtil.queryDictionaryByType("sex");
-		request.setAttribute("sexs", dictionary);
-		/*// 2、获取所有角色
-		SysRoleService sysRoleService = new SysRoleServiceImpl();
-		request.setAttribute("roleList", sysRoleService.queryAllRole());*/
+		request.setAttribute("sexes", dictionary);
+		//2、获取所有角色
+		RoleService rs = new RoleServiceImpl();
+		request.setAttribute("roleList", rs.getRoleList());
 		// 3、获取用户角色id
-		
+		UserRoleService urs=new UserRoleServiceImpl();
+		int role_id=urs.getRoleIdByUserId(userId);
+		request.setAttribute("role_id",role_id);
 		request.getRequestDispatcher("/WEB-INF/view/mime/userinfo.jsp").forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// 修改个人信息
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int id = Integer.parseInt(request.getParameter("id").trim());	
+		String login_name = request.getParameter("login_name").trim();	
+		String name = request.getParameter("name").trim();	
+		String phone = request.getParameter("phone").trim();
+		String sex = request.getParameter("sex").trim();
+		String email = request.getParameter("email").trim();
+		User user=new User(id,login_name, name, sex, email, phone, login_name);
+		UserService us=new UserServiceImpl();
+		us.UpdateUserMessage(user);
+		HttpSession session = request.getSession();
+		session.setAttribute("user", user);
+		response.sendRedirect(request.getContextPath()+"/view/mime/userinfo");
 	}
 }
