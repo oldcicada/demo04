@@ -6,4 +6,39 @@
 <select id="getRoleList" resultType="role">
 SELECT id,name,code,description FROM role where deleted=0
 </select>
+<select id="getPageRoleList" resultType="role" parameterType="map">
+SELECT id,name,code,description FROM role where deleted=0
+<if test="#{name} !=null">
+and name like #{name}
+</if>
+limit #{start},#{end}
+</select>
+<update id="deleteByRoleId" parameterType="int">
+update role set deleted=1 where id=#{id}
+</update>
+<select id="getRoleById" resultType="role" parameterType="int">
+SELECT id,name,code,used,description FROM role where deleted=0 and id=#{id}
+</select>
+<update id="updateByIdMessage" parameterType="role">
+update role set name=#{name},code=#{code},description=#{description},used=#{used},updater=#{updater},update_time=now() where deleted=0 and id=#{id}
+</update>
+<insert id="addRoleMessage" parameterType="role">
+INSERT INTO role(`name`, `code`,`system_role`,`used`,`founder`,`creation_time`,`updater`,`update_time`,`description`,`deleted`) 
+VALUES
+  (
+    #{name},
+    #{code},
+     "",
+    #{used},
+    #{founder},
+    now(),
+    #{updater},
+    now(),
+    #{description},
+    0
+  )
+</insert>
+<select id="getRoleIdByCode" parameterType="string" resultType="int">
+select id from role where code=#{code}
+</select>
 </mapper>

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.alibaba.fastjson.JSON;
 import com.cicada.entity.Role;
 import com.cicada.service.RoleService;
 import com.cicada.serviceImpl.RoleServiceImpl;
@@ -18,14 +19,16 @@ public class RoleListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RoleService rs=new RoleServiceImpl();
-		List<Role> roleList = rs.getRoleList();
-		System.out.println(roleList.get(0).getName());
-		request.setAttribute("roleList", roleList);
 		request.getRequestDispatcher("/WEB-INF/view/sys/roleList.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	int pageIndex=Integer.parseInt(request.getParameter("pageIndex").trim());
+	int pageSize=Integer.parseInt(request.getParameter("pageSize").trim());
+	String name=request.getParameter("name").trim();
+	RoleService rs=new RoleServiceImpl();
+	List<Role> roleList = rs.getPageRoleList(name,pageIndex,pageSize);
+	response.getWriter().print(JSON.toJSON(roleList));
 	}
 
 }

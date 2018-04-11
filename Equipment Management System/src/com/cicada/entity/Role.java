@@ -102,4 +102,23 @@ public class Role extends BaseEntity {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	public Role(int id,String name, String code, String used, String updater, String description) {
+		this.id=id;
+		this.name = name;
+		this.code = code;
+		this.used = used;
+		this.updater = updater;
+		this.description = description;
+	}
+
+	public Role(String name, String code, String used, String founder, String updater, String description) {
+		this.name = name;
+		this.code = code;
+		this.used = used;
+		this.founder = founder;
+		this.updater = updater;
+		this.description = description;
+	}
+	
 }

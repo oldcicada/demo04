@@ -19,17 +19,23 @@ import com.cicada.service.RoleService;
 import com.cicada.serviceImpl.RoleMenuServiceImpl;
 import com.cicada.serviceImpl.RoleServiceImpl;
 
-@WebServlet("/view/sys/roleForm")
-public class RoleFormServlet extends HttpServlet {
+@WebServlet("/view/sys/roleEdit")
+public class RoleEditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Dictionary> views = DictionaryUtil.queryDictionaryByType("view");
-		request.setAttribute("views", views);
-		request.getRequestDispatcher("/WEB-INF/view/sys/roleForm.jsp").forward(request, response);
+		int id=Integer.parseInt(request.getParameter("id").trim());
+		RoleService rs=new RoleServiceImpl();
+		Role role=rs.getRoleById(id);
+		request.setAttribute("role", role);
+		// 1、获取view字典项
+		List<Dictionary> dictionary = DictionaryUtil.queryDictionaryByType("view");
+		request.setAttribute("views", dictionary);
+		request.getRequestDispatcher("/WEB-INF/view/sys/roleEdit.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int id= Integer.parseInt(request.getParameter("id").trim());
 		String code=request.getParameter("code").trim();
 		String description=request.getParameter("description").trim();
 		String name=request.getParameter("name").trim();
@@ -38,13 +44,11 @@ public class RoleFormServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		User user = (User)session.getAttribute("user");
 		String updater=user.getLogin_name();
-		String founder=user.getLogin_name();
-		//1、添加role表
-		Role role=new Role(name, code, used,founder, updater, description);
+		//1、更新role表
+		Role role=new Role(id,name, code, used, updater, description);
 		RoleService rs=new RoleServiceImpl();
-		rs.addRoleMessage(role);
-		int roleId = rs.getRoleIdByCode(code);
-		//2、添加Role_menu表
+		rs.updateByIdMessage(role);
+		//2、更新Role_menu表
 		String[] menu_id=checkCodes.split(",|，");
 		int menuId[]=new int[menu_id.length];
 		try {
@@ -54,8 +58,11 @@ public class RoleFormServlet extends HttpServlet {
 		} catch (NumberFormatException e) {
 			System.out.println(e+"String转int错误。");
 		}
+		//先删除原有数据
 		RoleMenuService rms=new RoleMenuServiceImpl();
-		rms.add(roleId,menuId);
+		rms.deleteByRoleId(id);
+		//再添加新的数据
+		rms.add(id,menuId);
 		response.sendRedirect(request.getContextPath()+"/view/sys/roleList");
 	}
 

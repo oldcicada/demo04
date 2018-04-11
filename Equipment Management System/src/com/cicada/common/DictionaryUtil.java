@@ -9,7 +9,7 @@ import com.cicada.entity.Dictionary;
 import com.cicada.service.DictionaryService;
 import com.cicada.serviceImpl.DictionaryServiceImpl;
 
-public class DictionarytUtil {
+public class DictionaryUtil {
 	
 	//根据类型保存数据字典值
 	private static Map<String, List<Dictionary>> map=new HashMap<String, List<Dictionary>>();

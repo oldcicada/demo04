@@ -5,6 +5,8 @@ import com.cicada.common.PageDto;
 import com.cicada.entity.User;
 
 public interface UserService {
+	//获取用户id
+	public int getUserId(String login_name, String password);
 	// 登录获取用户id
 	public User login(String loginName, String password);
 	//获取所有用户信息
@@ -21,4 +23,6 @@ public interface UserService {
 	public void UpdateUserMessage(User user);
 	//重置密码
 	public void resetPass(int id);
+	//添加用户
+	public void addUserMessage(User user);
 }

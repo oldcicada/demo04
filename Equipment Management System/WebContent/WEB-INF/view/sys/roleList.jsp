@@ -26,27 +26,24 @@
 			<li><a href="view/sys/roleForm"> 新增角色 </a></li>
 		</ul>
 		<div class="row">
-			<div class="col-md-12">
-				<form action="view/sys/roleList" method="post" class="form-body"
-					role="form" style="margin: 20px;">
-					<table style="width: 100%;">
+			<div class="col-md-12" style="margin: 20px;">
+					<table>
 						<tr>
-							<td style="text-align: right; padding: 10px;"><label
+							<td style="text-align: right; padding-left: 200px"><label
 								class="control-label">角色简称：</label></td>
-							<td><input type="text" class="form-control" name="userName"
+							<td>
+							<input type="text" class="form-control" name="name"
 								placeholder="请输入角色名" /></td>
 							<td>
-								<button type="submit" class="btn btn-primary">
+								<button type="submit" id="query" class="btn btn-primary">
 									<i class="glyphicon glyphicon-search"></i>查询
 								</button>
-								<button type="submit" class="btn btn-default">
+								<button type="reset" id="reset" class="btn btn-default">
 									<i class="glyphicon glyphicon-refresh"></i>重置
 								</button>
 							</td>
-
 						</tr>
 					</table>
-				</form>
 			</div>
 		</div>
 	</div>
@@ -63,21 +60,29 @@
 							<th class="text-center">操作</th>
 						</tr>
 					</thead>
-					<tbody>
-					<c:forEach items="${roleList }" varStatus="st" var="list">
-						<tr>
-							<td>${st.index+1}</td>
-							<td>${list.name}</td>
-							<td>${list.description}</td>
-							<td class="text-center"><a href="#">编辑</a> <a href="#">删除</a>
-							</td>
-						</tr>
-					</c:forEach>
+					<tbody id="content">
 					</tbody>
 				</table>
 			</div>
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-md-5 col-sm-12">
+			<div id="pageMessage" style="padding:8px 20px;"
+			></div>
+		</div>
+		<div class="col-md-7 col-sm-12">
+			<div style="float: right; margin-right: 20px;"
+				id="pageControl">
+				<a href="javascript:void(0)" class="page" id="first">首页</a>&nbsp; 
+			    <a href="javascript:void(0)" class="page" id="previou">上页</a>&nbsp; 
+			    <a href="javascript:void(0)" class="page" id="next">下页</a>&nbsp; 
+			    <a href="javascript:void(0)" class="page" id="last">末页</a>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="resource/js/jquery.min.js"></script>
+	<script type="text/javascript" src="resource/js/roleList.js"></script>
 </body>
 </html>
 

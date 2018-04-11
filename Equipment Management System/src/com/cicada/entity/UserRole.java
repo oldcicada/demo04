@@ -10,6 +10,11 @@ public class UserRole extends BaseEntity {
 
 	}
 
+	public UserRole(int user_id, int role_id) {
+		this.user_id = user_id;
+		this.role_id = role_id;
+	}
+
 	public int getUser_id() {
 		return user_id;
 	}

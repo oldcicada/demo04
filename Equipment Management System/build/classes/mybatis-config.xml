@@ -16,6 +16,7 @@
 		<typeAlias alias="dictionary" type="com.cicada.entity.Dictionary" />
 		<typeAlias alias="euipment" type="com.cicada.entity.Equipment" />
 		<typeAlias alias="role" type="com.cicada.entity.Role" />
+		<typeAlias alias="userRole" type="com.cicada.entity.UserRole" />
 	</typeAliases>
 
 	<!-- 数据连接配置 -->

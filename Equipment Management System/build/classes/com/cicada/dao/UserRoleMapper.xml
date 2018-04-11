@@ -6,4 +6,10 @@
 <select id="getRoleIdByUserId" resultType="int" parameterType="int"> 
 select role_id from user_role where user_id=#{user_id}
 </select>
+<delete id="deleteByRoleId" parameterType="int">
+delete from user_role where role_id=#{id}
+</delete>
+<insert id="add" parameterType="userRole"> 
+insert into user_role(user_id,role_id) values(#{user_id},#{role_id})
+</insert>
 </mapper>

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.cicada.common.DictionarytUtil;
+import com.cicada.common.DictionaryUtil;
 import com.cicada.entity.Dictionary;
 import com.cicada.entity.User;
 import com.cicada.service.RoleService;
@@ -30,7 +30,7 @@ public class EemployeeEditServlet extends HttpServlet {
 	User user=us.getUserById(id);
 	request.setAttribute("user", user);
 	// 1、获取性别字典项
-	List<Dictionary> dictionary = DictionarytUtil.queryDictionaryByType("sex");
+	List<Dictionary> dictionary = DictionaryUtil.queryDictionaryByType("sex");
 	request.setAttribute("sexes", dictionary);
 	//2、获取所有角色
 	RoleService rs = new RoleServiceImpl();

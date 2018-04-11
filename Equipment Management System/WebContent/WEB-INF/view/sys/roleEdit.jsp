@@ -23,37 +23,47 @@
 		</div>
 		<!-- END PAGE HEADER-->
 		<ul class="nav nav-tabs">
-			<li><a href="view/sys/roleList"> 角色列表 </a></li>
-			<li class="active"><a href="view/sys/roleForm"> 角色信息 </a></li>
+			<li class="active"><a>角色信息修改</a></li>
 		</ul>
 		<!-- BEGIN PAGE CONTENT-->
 		<div class="row">
 			<div class="col-md-8">
 				<!-- BEGIN FORM-->
-				<form action="view/sys/roleForm" method="post" style="margin: 20px;">
+				<form action="view/sys/roleEdit" method="post" style="margin: 20px;">
+					<input type="hidden" value="${role.id}" id="id" name="id">
 					<div class="form-body">
 						<div class="form-group">
 							<label>角色简称：</label> <input type="text" class="form-control"
-								name="name"  placeholder="请输入角色简称" />
+								name="name" value=${role.name } placeholder="请输入角色简称" />
 						</div>
 						<div class="form-group">
 							<label>角色描述：</label>
-							<textarea class="form-control" rows="3" name="description"></textarea>
+							<textarea class="form-control" rows="3" name="description">${role.description}</textarea>
 						</div>
 						<div class="form-group">
 							<label>角色代码：</label>
 								<input type="text" class="form-control" name="code"
-									 placeholder="请输入角色代码" />
+									value="${role.code}" placeholder="请输入角色代码" />
 						</div>
 						<div class="form-group">
 							<label>是否启用：</label>
 								<div class="radio-list">
 									<div id="enable-radio">
 										<c:forEach items="${views}" var="views">
+											<c:choose>
+												<c:when test="${role.used == views.value}">
 													<label class="radio-inline"> <input type="radio"
-														name="used">
+														name="used" value="${views.value }" checked="checked">
 														${views.tag }
 													</label>
+												</c:when>
+												<c:otherwise>
+													<label class="radio-inline"> <input type="radio"
+														name="used" value="${views.value }">
+														${views.tag }
+													</label>
+												</c:otherwise>
+											</c:choose>
 										</c:forEach>
 								</div>
 							</div>
@@ -85,7 +95,7 @@
 	<script src="resource/js/jquery.ztree.excheck.js"
 	type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
-var setting = {
+	var setting = {
 		check : {
 			enable : true
 		//是否显示选择框
@@ -97,24 +107,25 @@ var setting = {
 			}
 		}
 	};
-$(function() {
-	$.post("view/sys/roleDelete", {
-		"id" :""
-	}, function(data) {
-		data = eval("(" + data + ")");
-		$.fn.zTree.init($("#treeDemo"), setting, data);
+
+	$(function() {
+		$.post("view/sys/roleDelete", {
+			"id" : $("#id").val()
+		}, function(data) {
+			data = eval("(" + data + ")");
+			$.fn.zTree.init($("#treeDemo"), setting, data);
+		});
 	});
-});
 
-function doSubmit() {
-	var treeObj = $.fn.zTree.getZTreeObj("treeDemo");
-	var nodes = treeObj.getCheckedNodes(true);
-	var menuIds = "";
-	for (var i = 0; i < nodes.length; i++) {
-		menuIds += nodes[i].id + ",";
+	function doSubmit() {
+		var treeObj = $.fn.zTree.getZTreeObj("treeDemo");
+		var nodes = treeObj.getCheckedNodes(true);
+		var menuIds = "";
+		for (var i = 0; i < nodes.length; i++) {
+			menuIds += nodes[i].id + ",";
+		}
+		$("#checkCodes").val(menuIds);
+		$("#roleForm").submit();
 	}
-	$("#checkCodes").val(menuIds);
-}
-
 </script>
 </html>

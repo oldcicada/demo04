@@ -6,7 +6,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.cicada.common.DictionarytUtil;
+import com.cicada.common.DictionaryUtil;
 import com.cicada.common.PageDto;
 import com.cicada.dao.UserDao;
 import com.cicada.entity.User;
@@ -25,7 +25,14 @@ public class UserServiceImpl implements UserService {
 		sqlSession.close();
 		return user;
 	}
-
+	//获取用户id
+		public int getUserId(String login_name, String password) {
+			sqlSession = SqlSessionFactoryUtil.getSqlSession();
+			ud = sqlSession.getMapper(UserDao.class);
+			int userId = ud.getUserId(login_name, password);
+			sqlSession.close();
+			return userId;
+		}
 	// 获取所有用户信息
 	public List<User> getAllUser() {
 		sqlSession = SqlSessionFactoryUtil.getSqlSession();
@@ -60,7 +67,7 @@ public class UserServiceImpl implements UserService {
 		// 根据数据字典得到性别value
 		
 		 for (User user : userList) { 
-			  user.setSex(DictionarytUtil.queryDictionaryName("sex",user.getSex()));
+			  user.setSex(DictionaryUtil.queryDictionaryName("sex",user.getSex()));
 		  }
 
 		pageDto.setPageIndex(pageIndex);
@@ -110,5 +117,12 @@ public class UserServiceImpl implements UserService {
 		sqlSession.commit();
 		sqlSession.close();
 	}
-
+		//添加用户
+		public void addUserMessage(User user) {
+			sqlSession = SqlSessionFactoryUtil.getSqlSession();
+			ud = sqlSession.getMapper(UserDao.class);
+			ud.addUserMessage(user);
+			sqlSession.commit();
+			sqlSession.close();
+		}
 }

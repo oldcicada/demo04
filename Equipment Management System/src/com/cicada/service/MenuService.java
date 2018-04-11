@@ -7,4 +7,7 @@ import com.cicada.entity.Menu;
 public interface MenuService {
 	//获取用户菜单列表
 	public List<Menu> getMenuList(int id);
+	
+	//获取所有菜单列表
+	public List<Menu> getAllMenuList();
 }

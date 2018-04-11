@@ -38,4 +38,11 @@ public class MenuServiceImpl implements MenuService{
 		}
 		return list;
 	}
+	//获取所有菜单列表
+		public List<Menu> getAllMenuList() {
+		sqlSession=SqlSessionFactoryUtil.getSqlSession();
+		md = sqlSession.getMapper(MenuDao.class);
+		List<Menu> menuList = md.getAllMenuList();
+		return menuList;
+	}
 }
