@@ -24,8 +24,8 @@ public class RoleFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Dictionary> views = DictionaryUtil.queryDictionaryByType("view");
-		request.setAttribute("views", views);
+		List<Dictionary> show = DictionaryUtil.queryDictionaryByType("view");
+		request.setAttribute("show", show);
 		request.getRequestDispatcher("/WEB-INF/view/sys/roleForm.jsp").forward(request, response);
 	}
 

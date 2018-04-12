@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.cicada.common.PageDto;
 import com.cicada.dao.DictionaryDao;
 import com.cicada.entity.Dictionary;
 import com.cicada.service.DictionaryService;
@@ -40,16 +41,25 @@ public class DictionaryServiceImpl implements DictionaryService {
 	}
 
 	// 查询生成列表
-	public List<Dictionary> queryDictionaries(String type, String tag) {
-		SqlSession sqlSession = SqlSessionFactoryUtil.getSqlSession();
-		DictionaryDao dd = sqlSession.getMapper(DictionaryDao.class);
-		Map<String, String> map = new HashMap<>();
+	public PageDto<Dictionary> queryDictionaries(int pageIndex,int pageSize,String type, String tag) {
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		map.put("start", (pageIndex-1)*pageSize);
+		map.put("end", pageSize);
 		map.put("type", "%" + type + "%");
 		map.put("tag", "%" + tag + "%");
+		
+		SqlSession sqlSession = SqlSessionFactoryUtil.getSqlSession();
+		DictionaryDao dd = sqlSession.getMapper(DictionaryDao.class);
 		List<Dictionary> dictionaries = dd.queryDictionaries(map);
-		System.out.println(dictionaries.toString());
+		int count=dd.queryDictionariesCount(map);
+		
+		PageDto<Dictionary> dto=new PageDto<>();
+		dto.setCount(count);
+		dto.setList(dictionaries);
+		dto.setPageIndex(pageIndex);
+		dto.setPageTotal(count % pageSize == 0 ? count / pageSize : count / pageSize + 1);
 		sqlSession.close();
-		return dictionaries;
+		return dto;
 	}
 
 	// 添加字典值

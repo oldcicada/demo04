@@ -74,7 +74,6 @@ public class UserServiceImpl implements UserService {
 		pageDto.setPageSize(pageSize);
 		pageDto.setList(userList);
 		int count = ud.queryUserCount(map);
-		// System.out.println(count);
 		pageDto.setCount(count);
 		pageDto.setPageTotal(count % pageSize == 0 ? count / pageSize : count / pageSize + 1);
 
@@ -124,5 +123,16 @@ public class UserServiceImpl implements UserService {
 			ud.addUserMessage(user);
 			sqlSession.commit();
 			sqlSession.close();
+		}
+		//用于邮箱改密码
+		public int getUserIdByEmail(String email) {
+			int UserId=-1;
+			sqlSession = SqlSessionFactoryUtil.getSqlSession();
+			ud = sqlSession.getMapper(UserDao.class);
+			Object object = ud.getUserIdByEmail(email);
+			if(object!=null) {
+				 UserId=(int)object;
+			}
+			return UserId;
 		}
 }

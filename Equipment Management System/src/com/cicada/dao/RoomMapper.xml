@@ -3,4 +3,71 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cicada.dao.RoomDao">
+<select id="queryRoomPage" parameterType="map" resultType="room">
+select id,address,number,phone,state,type,linker from room where deleted=0
+<if test="#{address} !=null">
+and address like #{address}
+</if>
+<if test="#{number} !=null">
+and number like #{number}
+</if>
+<if test="#{type} !=null">
+and type like #{type}
+limit #{start},#{end}
+</if>
+</select>
+<select id="queryRoomPageCount" parameterType="map" resultType="int">
+select count(1) from room  where deleted=0
+<if test="#{address} !=null">
+and address like #{address}
+</if>
+<if test="#{number} !=null">
+and number like #{number}
+</if>
+<if test="#{type} !=null">
+and type like #{type}
+</if>
+</select>
+<update id="deleteById" parameterType="int">
+update room set deleted=1 where id=#{id}
+</update>
+<update id="updateById" parameterType="room">
+UPDATE room SET
+  `address` = #{address},
+  `number` = #{number},
+  `type` = #{type},
+  `linker` = #{linker},
+  `phone` = #{phone},
+  `state` = #{state}
+WHERE deleted=0 and id = #{id} 
+</update>
+<insert id="add" parameterType="room">
+INSERT INTO room (
+  `address`,
+  `number`,
+  `type`,
+  `linker`,
+  `phone`,
+  `state`,
+  `deleted`
+) 
+VALUES
+  (
+    #{address},
+    #{number},
+    #{type},
+    #{linker},
+    #{phone},
+    0,
+    0
+  )
+</insert> 
+<select id="getRoomMessageById" parameterType="int" resultType="room">
+select id,`address`,
+  `number`,
+  `type`,
+  `linker`,
+  `phone`,
+  `state` from room where deleted=0 and id=#{id}
+</select>
 </mapper>

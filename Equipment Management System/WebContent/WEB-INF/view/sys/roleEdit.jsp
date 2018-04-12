@@ -49,18 +49,18 @@
 							<label>是否启用：</label>
 								<div class="radio-list">
 									<div id="enable-radio">
-										<c:forEach items="${views}" var="views">
+										<c:forEach items="${show}" var="show">
 											<c:choose>
-												<c:when test="${role.used == views.value}">
+												<c:when test="${role.used == show.value}">
 													<label class="radio-inline"> <input type="radio"
-														name="used" value="${views.value }" checked="checked">
+														name="used" value="${show.value }" checked="checked">
 														${views.tag }
 													</label>
 												</c:when>
 												<c:otherwise>
 													<label class="radio-inline"> <input type="radio"
-														name="used" value="${views.value }">
-														${views.tag }
+														name="used" value="${show.value }">
+														${show.tag }
 													</label>
 												</c:otherwise>
 											</c:choose>

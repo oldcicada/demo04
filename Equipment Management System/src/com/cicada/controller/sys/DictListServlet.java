@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.alibaba.fastjson.JSON;
+import com.cicada.common.PageDto;
 import com.cicada.entity.Dictionary;
 import com.cicada.service.DictionaryService;
 import com.cicada.serviceImpl.DictionaryServiceImpl;
@@ -25,13 +27,13 @@ public class DictListServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int pageIndex=Integer.parseInt(request.getParameter("pageIndex").trim());
+		int pageSize=Integer.parseInt(request.getParameter("pageSize").trim());
 		String type=request.getParameter("type").trim();
 		String tag=request.getParameter("tag").trim();
-		//System.out.println("type:"+type+"tag:"+tag);
 		DictionaryService ds=new DictionaryServiceImpl();
-		List<Dictionary> dictionaryList = ds.queryDictionaries(type,tag);
-		request.setAttribute("dictionaryList",dictionaryList );
-		request.getRequestDispatcher("/WEB-INF/view/sys/dictList.jsp").forward(request, response);
+		PageDto<Dictionary> dto = ds.queryDictionaries(pageIndex,pageSize,type,tag);
+		response.getWriter().print(JSON.toJSON(dto));
 	}
 
 }

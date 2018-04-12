@@ -36,20 +36,19 @@
 			</ul>
 			<div class="row">
 				<div class="col-md-12 alltable">
-						<form action="view/equip/equipList"  method="post" class="form-horizontal" style="margin: 20px;">
-							<table style="width:100%;">
+							<table style="margin: 20px;">
 								<tr>
 									<td style="text-align: right;padding: 10px;">设备类型：</td>
 									<td>
-										<select name="classify">
+										<select name="type">
 											<option>请选择类型</option>
 										</select>
 									</td>
 									<td style="text-align: right;padding: 10px;">名称：</td>
-									<td><input type="text" class="form-control" name="userName" placeholder="请输入设备名称"/></td>
+									<td><input type="text" class="form-control" name="name" placeholder="请输入设备名称"/></td>
 									<td style="text-align: right;padding: 10px;">状态：</td>
 									<td>
-										<select name="classify">
+										<select name="state">
 											<option>请选择类型</option>
 										</select>
 									</td>

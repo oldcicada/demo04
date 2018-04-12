@@ -30,7 +30,7 @@ public class RoleEditServlet extends HttpServlet {
 		request.setAttribute("role", role);
 		// 1、获取view字典项
 		List<Dictionary> dictionary = DictionaryUtil.queryDictionaryByType("view");
-		request.setAttribute("views", dictionary);
+		request.setAttribute("show", dictionary);
 		request.getRequestDispatcher("/WEB-INF/view/sys/roleEdit.jsp").forward(request, response);
 	}
 

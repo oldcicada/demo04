@@ -70,4 +70,23 @@ public class Room extends BaseEntity {
 	public void setDeleted(String deleted) {
 		this.deleted = deleted;
 	}
+
+	public Room(String address, String number, String type, String linker, String phone) {
+		this.address = address;
+		this.number = number;
+		this.type = type;
+		this.linker = linker;
+		this.phone = phone;
+	}
+
+	public Room(int id,String address, String number, String type, String linker, String phone, String state) {
+		this.id=id;
+		this.address = address;
+		this.number = number;
+		this.type = type;
+		this.linker = linker;
+		this.phone = phone;
+		this.state = state;
+	}
+	
 }

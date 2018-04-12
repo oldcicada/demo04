@@ -13,7 +13,9 @@ public interface DictionaryDao {
 	//删除指定id的字典信息
 	public void deleteDictionary(int id);
 	//查询生成列表
-	List<Dictionary> queryDictionaries(Map<String, String> map);
+	List<Dictionary> queryDictionaries(Map<Object, Object> map);
+	//查询列表count
+	int queryDictionariesCount(Map<Object, Object> map);
 	//添加字典值
 	public void addDictionary(Dictionary dic);
 	//修改字典值

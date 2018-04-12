@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/base.jsp"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<%@ include file="/base.jsp"%>
 <link rel="stylesheet" type="text/css"
 	href="resource/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="resource/css/common.css" />
@@ -26,35 +27,33 @@
 		</ul>
 		<div class="row">
 			<div class="col-md-12">
-				<form method="post" action="view/sys/roomList" style="margin: 20px;">
-					<table style="width: 100%;">
+					<table style="margin: 20px;">
 						<tr>
-							<td style="text-align: right; padding: 10px;"><label
+							<td style="text-align: right; padding-left: 100px;"><label
 								class="control-label">办公地址：</label></td>
-							<td><input type="text" class="form-control" name="userName"
-								placeholder="" /></td>
+							<td><input type="text" class="form-control" name="address"
+								placeholder="请输入办公地址" /></td>
 							<td style="text-align: right; padding: 10px;">房间号：</td>
-							<td><input type="text" class="form-control" name="userName"
-								placeholder="请输入员工姓名" /></td>
+							<td><input type="text" class="form-control" name="number"
+								placeholder="请输入房间号" /></td>
 							<td style="text-align: right; padding: 10px;">办公地分类：</td>
-							<td><select name="roomType" class="form-control">
+							<td><select name="type" class="form-control">
 									<option value="">请选择</option>
-									<option value="1">教室</option>
-									<option value="2">办公室</option>
-									<option value="3">会议室</option>
+								<c:forEach items="${roomTypes}" var="type">
+									<option value="${type.value}">${type.tag}</option>
+								</c:forEach>
 							</select></td>
 							<td style="text-align: right; padding: 10px;"></td>
 							<td>
-								<button type="submit" class="btn btn-primary">
+								<button type="submit" id="query" class="btn btn-primary">
 									<i class="glyphicon glyphicon-search"></i>查询
 								</button>
-								<button type="submit" class="btn btn-default">
+								<button type="reset" id="reset" class="btn btn-default">
 									<i class="glyphicon glyphicon-refresh"></i>重置
 								</button>
 							</td>
 						</tr>
 					</table>
-				</form>
 			</div>
 		</div>
 	</div>
@@ -71,40 +70,11 @@
 							<th class="text-center">办公地分类</th>
 							<th class="text-center">负责人</th>
 							<th class="text-center">负责人电话</th>
+							<th class="text-center">状态</th>
 							<th class="text-center">操作</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
-							<td>1</td>
-							<td>磨店安徽广播职业技术学院</td>
-							<td>教室一</td>
-							<td>教室</td>
-							<td>叶兰</td>
-							<td>13812341234</td>
-							<td class="text-center"><a href="#">编辑</a> <a href="#">删除</a>
-							</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>磨店安徽广播职业技术学院</td>
-							<td>办公室1</td>
-							<td>办公室</td>
-							<td>叶兰</td>
-							<td>13812341234</td>
-							<td class="text-center"><a href="#">编辑</a> <a href="#">删除</a>
-							</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>磨店安徽广播职业技术学院</td>
-							<td>教室一</td>
-							<td>教室</td>
-							<td>叶兰</td>
-							<td>13812341234</td>
-							<td class="text-center"><a href="#">编辑</a> <a href="#">删除</a>
-							</td>
-						</tr>
+					<tbody id="content">
 					</tbody>
 				</table>
 			</div>
@@ -112,31 +82,20 @@
 	</div>
 	<div class="row">
 		<div class="col-md-5 col-sm-12">
-			<div class="dataTables_info" style="padding-top: 8px;" role="status"
-				aria-live="polite">显示 1 到 10 共 25 记录</div>
+			<div id="pageMessage" style="padding:8px 20px;"
+			></div>
 		</div>
 		<div class="col-md-7 col-sm-12">
-			<div style="float: right; margin: 0px; height: 40px;"
-				id="sample_1_paginate">
-				<ul class="pagination" style="visibility: visible;">
-					<li class="prev disabled"><a href="#" title="首页"><i
-							class="glyphicon glyphicon-menu-left"></i></a></li>
-					<li class="prev disabled"><a href="#" title="上一页"><i
-							class="glyphicon glyphicon-menu-left"></i><i
-							class="glyphicon glyphicon-menu-left"></i></a></li>
-					<li class="active"><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li class="next"><a href="#" title="下一页"><i
-							class="glyphicon glyphicon-menu-right"></i></a></li>
-					<li class="next"><a href="#" title="尾页"><i
-							class="glyphicon glyphicon-menu-right"></i><i
-							class="glyphicon glyphicon-menu-right"></i></a></li>
-				</ul>
+			<div style="float: right; margin-right: 20px;"
+				id="pageControl">
+				<a href="javascript:void(0)" class="page" id="first">首页</a>&nbsp; 
+			    <a href="javascript:void(0)" class="page" id="previou">上页</a>&nbsp; 
+			    <a href="javascript:void(0)" class="page" id="next">下页</a>&nbsp; 
+			    <a href="javascript:void(0)" class="page" id="last">末页</a>
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript" src="resource/js/jquery.min.js"></script>
+	<script type="text/javascript" src="resource/js/roomList.js"></script>
 </body>
 </html>

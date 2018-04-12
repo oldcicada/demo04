@@ -30,4 +30,6 @@ public interface UserDao {
 	public void UpdateUserMessage(User user);
 	//添加用户
 	public void addUserMessage(User user); 
+	//用于邮箱改密码
+	public Object getUserIdByEmail(String email);
 }

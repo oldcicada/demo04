@@ -49,10 +49,10 @@
 							<label>是否启用：</label>
 								<div class="radio-list">
 									<div id="enable-radio">
-										<c:forEach items="${views}" var="views">
+										<c:forEach items="${show }" var="show">
 													<label class="radio-inline"> <input type="radio"
-														name="used">
-														${views.tag }
+														name="used" value="${show.value }">
+														${show.tag }
 													</label>
 										</c:forEach>
 								</div>

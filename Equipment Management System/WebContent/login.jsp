@@ -52,19 +52,20 @@
 			</form>
 		</div>
 		<div class="body forget">
-			<form action="register" method="post">
+			<form action="sendMail" method="post">
 				<div class="body-head">
 					<h2>忘记密码？</h2>
 				</div>
 				<div class="body-main">
 					<div class="form-group" style="text-align: left;">
 						输入你的邮箱进行重新设置你的密码 <input type="text" class="form-control"
-							id="exampleInputEmail2" placeholder="Email">
+							id="exampleInputEmail2" placeholder="Email" name="email">
 					</div>
 				</div>
 				<div class="body-foot">
 					<button class="btn btn-default back" type="reset">返回</button>
-					<button class="btn btn-success" type="submit">确定登陆</button>
+					<button class="btn btn-success" type="submit">发送邮件</button>
+					${sendError}
 				</div>
 			</form>
 		</div>
