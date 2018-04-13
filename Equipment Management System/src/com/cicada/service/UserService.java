@@ -26,5 +26,7 @@ public interface UserService {
 	//添加用户
 	public void addUserMessage(User user);
 	//用于邮箱改密码
-	public int getUserIdByEmail(String email);
+	public User getUserByEmail(String email);
+	//邮箱改密码
+	public void updatePassword(String receiveMail,String newPassword);
 }

@@ -7,6 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.alibaba.fastjson.JSON;
+import com.cicada.common.PageDto;
+import com.cicada.entity.Equipment;
+import com.cicada.service.EquipmentService;
+import com.cicada.serviceImpl.EquipmentServiceImpl;
+
 @WebServlet("/view/equip/equipList")
 public class EquipListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -16,6 +22,14 @@ public class EquipListServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int pageIndex=Integer.parseInt(request.getParameter("pageIndex").trim());
+		int pageSize=Integer.parseInt(request.getParameter("pageSize").trim());
+		String name=request.getParameter("name").trim();
+		String state=request.getParameter("state").trim();
+		String type=request.getParameter("type").trim();
+		EquipmentService es=new EquipmentServiceImpl();
+		PageDto<Equipment> dto = es.getEquipmentPage(pageIndex,pageSize,name,type,state);
+		response.getWriter().print(JSON.toJSON(dto));
 	}
 
 }

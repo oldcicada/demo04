@@ -11,6 +11,7 @@ import com.cicada.common.PageDto;
 import com.cicada.dao.UserDao;
 import com.cicada.entity.User;
 import com.cicada.service.UserService;
+import com.cicada.util.Md5;
 import com.cicada.util.SqlSessionFactoryUtil;
 
 public class UserServiceImpl implements UserService {
@@ -125,14 +126,22 @@ public class UserServiceImpl implements UserService {
 			sqlSession.close();
 		}
 		//用于邮箱改密码
-		public int getUserIdByEmail(String email) {
-			int UserId=-1;
+		public User getUserByEmail(String email) {
 			sqlSession = SqlSessionFactoryUtil.getSqlSession();
 			ud = sqlSession.getMapper(UserDao.class);
-			Object object = ud.getUserIdByEmail(email);
-			if(object!=null) {
-				 UserId=(int)object;
-			}
-			return UserId;
+			User user = ud.getUserByEmail(email);
+			sqlSession.close();
+			return user;
+		}
+		//邮箱改密码
+		public void updatePassword(String receiveMail,String newPassword) {
+			User user=new User();
+			user.setEmail(receiveMail);
+			user.setPassword(Md5.MD5(newPassword));
+			sqlSession = SqlSessionFactoryUtil.getSqlSession();
+			ud = sqlSession.getMapper(UserDao.class);
+			ud.updatePassword(user);
+			sqlSession.commit();
+			sqlSession.close();
 		}
 }

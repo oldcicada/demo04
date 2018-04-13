@@ -54,7 +54,7 @@
 												<c:when test="${role.used == show.value}">
 													<label class="radio-inline"> <input type="radio"
 														name="used" value="${show.value }" checked="checked">
-														${views.tag }
+														${show.tag }
 													</label>
 												</c:when>
 												<c:otherwise>

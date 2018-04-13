@@ -28,9 +28,6 @@ public class UserinfoServlet extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		if(user==null) {
-			return;
-		}
 		int userId=user.getId();
 		request.setAttribute("user", user);
 		// 1、获取性别字典项

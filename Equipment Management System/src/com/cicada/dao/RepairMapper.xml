@@ -3,4 +3,27 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cicada.dao.RepairDao">
+<!-- <select id="getRepairPage" parameterType="map" resultType="repair">
+SELECT 
+  `id`,
+  `number`,
+  `title`,
+  `description`,
+  `room_id`,
+  `euipment_id`,
+  `state`,
+FROM
+  repair 
+  left join room on room.id=repair.room_id
+  <if test="#{name}!=null">
+  and name like #{name}
+  </if> 
+  <if test="#{type}!=null">
+  and type like #{type}
+  </if> 
+  <if test="#{state}!=null">
+  and state like #{state}
+  </if> 
+LIMIT #{start}, #{end} 
+</select>-->
 </mapper>

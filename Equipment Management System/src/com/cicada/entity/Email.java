@@ -8,12 +8,21 @@ public class Email extends BaseEntity {
 	private String type;
 	private String content;
 	private String login_name;
+	private String email;
 	private Date send_time;
 	private Date failuer_time;
 	private String state;
 
 	public Email() {
 
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getType() {
@@ -62,6 +71,13 @@ public class Email extends BaseEntity {
 
 	public void setState(String state) {
 		this.state = state;
+	}
+
+	public Email(String content, String email, Date send_time, Date failuer_time) {
+		this.content = content;
+		this.email = email;
+		this.send_time = send_time;
+		this.failuer_time = failuer_time;
 	}
 
 }

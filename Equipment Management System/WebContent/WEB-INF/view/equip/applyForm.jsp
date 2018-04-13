@@ -42,19 +42,17 @@
 							<form action="view/equip/applyForm" method="post" class="form-horizontal">
 								<div class="form-body">
 									<div class="form-group">
-										<label class="control-label col-md-3" for="inputWarning">设备名称：<span class="required">
-										* </span></label>
+										<label class="control-label col-md-3" for="inputWarning">设备名称：</label>
 										<div class="col-md-4">
-											电脑2
+											<input type="name" class="form-control" name="email" placeholder="请输入一句话故障">
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="control-label col-md-3" for="inputError">故障标题：</label>
 										<div class="col-md-4">
 											<div class="input-group">
-												<input type="email" class="form-control" name="email" placeholder="请输入一句话故障">
+												<input type="" class="form-control" name="email" placeholder="请输入一句话故障">
 												<span class="input-group-addon">
-												<i class="glyphicon glyphicon-envelope"></i>
 												</span>
 											</div>
 										</div>
@@ -68,7 +66,7 @@
 									<div class="form-group">
 										<label class="control-label col-md-3" for="inputSuccess">上传附件：</label>
 										<div class="col-md-4">
-											<input type="file" class="form-control" name="realName" placeholder="请输入电话号码"/>
+											<input type="file" class="form-control" name="file"/>
 										</div>
 									</div>
 								</div>
@@ -76,6 +74,7 @@
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
 											<button type="submit" class="btn btn-primary blue">确定申报</button>
+											<button type="reset" class="btn btn-primary blue">重置</button>
 										</div>
 									</div>
 								</div>

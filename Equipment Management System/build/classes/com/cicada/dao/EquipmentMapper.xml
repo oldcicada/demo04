@@ -3,5 +3,44 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cicada.dao.EquipmentDao">
-
+	<select id="getEquipmentPage" parameterType="map"
+		resultType="equipment">
+		SELECT
+		e.`id`,
+		e.`name`,
+		e.`code`,
+		e.`type`,
+		e.`remark`,
+		e.`state`,
+		room.number as room_name
+		FROM
+		equipment e
+		left join room on room.id=e.room_id
+		where e.deleted=0
+		<if test="#{type} != null">
+		and e.type like #{type}
+		</if>
+		<if test="#{state} != null">
+		and e.state like #{state}
+		</if>
+		<if test="#{name} != null">
+		and e.name like #{name}
+		</if>
+		LIMIT #{start},#{end}
+	</select>
+	<select id="getEquipmentPageCount" parameterType="map"
+		resultType="int">
+		SELECT count(1) FROM equipment e
+		left join room on room.id=e.room_id
+		where e.deleted=0
+		<if test="#{type} != null">
+		and e.type like #{type}
+		</if>
+		<if test="#{state} != null">
+		and e.state like #{state}
+		</if>
+		<if test="#{name} != null">
+		and e.name like #{name}
+		</if>
+	</select>
 </mapper>

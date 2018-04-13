@@ -20,12 +20,12 @@ public class EmailUtil {
     // PS: 某些邮箱服务器为了增加邮箱本身密码的安全性，给 SMTP 客户端设置了独立密码（有的邮箱称为“授权码”）, 
     //     对于开启了独立密码的邮箱, 这里的邮箱密码必需使用这个独立密码（授权码）。
     public static String myEmailAccount = "1915741019@qq.com";
-    public static String myEmailPassword = "072799mc";
+    public static String myEmailPassword = "bhzgqfbyykwgbiih";
 
     // 发件人邮箱的 SMTP 服务器地址, 必须准确, 不同邮件服务器地址不同, 一般(只是一般, 绝非绝对)格式为: smtp.xxx.com
     public static String myEmailSMTPHost = "smtp.qq.com";
 
-    public static void resetPassword(User sysUser,Long code) throws Exception{
+    public static Object resetPassword(User sysUser,Long code) throws Exception{
         // 1. 创建参数配置, 用于连接邮件服务器的参数配置
         Properties props = new Properties();                    // 参数配置
         props.setProperty("mail.transport.protocol", "smtp");   // 使用的协议（JavaMail规范要求）
@@ -77,6 +77,7 @@ public class EmailUtil {
 
         // 7. 关闭连接
         transport.close();
+        return message.getContent();
     }
 
     /**
@@ -103,7 +104,7 @@ public class EmailUtil {
         // 5. Content: 邮件正文（可以使用html标签）（内容有广告嫌疑，避免被邮件服务器误认为是滥发广告以至返回失败，请修改发送内容）
         //链接地址不能是localhost，否则被拦截
         message.setContent(sysUser.getName()+"你好, 您的重置密码请求，"
-        		+ "<a href='http://127.0.0.1:8080/equipAdmin/validate?receiveMail="
+        		+ "<a href='http://127.0.0.1:8080/Equipment_Management_System/receiveMail?receiveMail="
         		+sysUser.getEmail()+"&code="+code+"'>请点击修改</a>",
         		"text/html;charset=UTF-8");
 

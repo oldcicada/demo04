@@ -90,6 +90,11 @@ VALUES
     #{description},
     0
   )
-  	
+  </update>
+  <select id="getUserByEmail" parameterType="string" resultType="user">
+  select name,email from user where deleted=0 and email=#{email}
+  </select>
+  <update id="updatePassword" parameterType="user">
+	update user set password=#{password} where email=#{email} and deleted=0
   </update>
 </mapper>

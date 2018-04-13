@@ -29,21 +29,25 @@
 			<div class="col-md-12">
 					<table style="margin: 20px;">
 						<tr>
-							<td style="text-align: right; padding-left: 100px;"><label
-								class="control-label">办公地址：</label></td>
+							<td style="padding-left: 50px;">
+							<label class="control-label">办公地址：</label></td>
 							<td><input type="text" class="form-control" name="address"
 								placeholder="请输入办公地址" /></td>
-							<td style="text-align: right; padding: 10px;">房间号：</td>
+							<td style="padding: 10px"></td>	
+							<td style="text-align: right; padding: 10px;"><label
+								class="control-label">房间号：</label></td>
 							<td><input type="text" class="form-control" name="number"
 								placeholder="请输入房间号" /></td>
-							<td style="text-align: right; padding: 10px;">办公地分类：</td>
+							<td style="padding: 10px"></td>
+							<td style="text-align: right; padding: 10px;"><label
+								class="control-label">办公地分类：</label></td>
 							<td><select name="type" class="form-control">
 									<option value="">请选择</option>
 								<c:forEach items="${roomTypes}" var="type">
 									<option value="${type.value}">${type.tag}</option>
 								</c:forEach>
 							</select></td>
-							<td style="text-align: right; padding: 10px;"></td>
+							<td style="padding: 10px"></td>
 							<td>
 								<button type="submit" id="query" class="btn btn-primary">
 									<i class="glyphicon glyphicon-search"></i>查询

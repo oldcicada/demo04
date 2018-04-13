@@ -10,9 +10,19 @@ public class Equipment extends BaseEntity {
 	private String state;
 	private int roomId;
 	private String deleted;
+	//用于存储房间名称
+	private String room_name;
 
 	public Equipment() {
 
+	}
+
+	public String getRoom_name() {
+		return room_name;
+	}
+
+	public void setRoom_name(String room_name) {
+		this.room_name = room_name;
 	}
 
 	public String getName() {
@@ -71,4 +81,13 @@ public class Equipment extends BaseEntity {
 		this.deleted = deleted;
 	}
 
+	public Equipment(String name, String code, String type, String remark, String state, int roomId) {
+		this.name = name;
+		this.code = code;
+		this.type = type;
+		this.remark = remark;
+		this.state = state;
+		this.roomId = roomId;
+	}
+	
 }

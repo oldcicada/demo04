@@ -3,4 +3,27 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cicada.dao.EmailDao">
+<insert id="saveEmail" parameterType="email">
+INSERT INTO email(type,
+  `content`,
+  `login_name`,
+  `email`,
+  `send_time`,
+  `failuer_time`,
+  `state`
+) 
+VALUES
+  (
+    '邮件',
+    #{content},
+    #{login_name},
+    #{email},
+    #{send_time},
+    #{failuer_time},
+    0
+  ) 
+</insert>
+<select id="getEmail" parameterType="date" resultType="date"> 
+select failuer_time from email where send_time=#{send_time}
+</select>
 </mapper>

@@ -65,8 +65,8 @@
 				<div class="body-foot">
 					<button class="btn btn-default back" type="reset">返回</button>
 					<button class="btn btn-success" type="submit">发送邮件</button>
-					${sendError}
 				</div>
+				${sendError}
 			</form>
 		</div>
 	</div>

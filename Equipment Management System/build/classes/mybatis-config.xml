@@ -14,7 +14,7 @@
 		<typeAlias alias="menu" type="com.cicada.entity.Menu" />
 		<typeAlias alias="email" type="com.cicada.entity.Email" />
 		<typeAlias alias="dictionary" type="com.cicada.entity.Dictionary" />
-		<typeAlias alias="euipment" type="com.cicada.entity.Equipment" />
+		<typeAlias alias="equipment" type="com.cicada.entity.Equipment" />
 		<typeAlias alias="role" type="com.cicada.entity.Role" />
 		<typeAlias alias="userRole" type="com.cicada.entity.UserRole" />
 	</typeAliases>

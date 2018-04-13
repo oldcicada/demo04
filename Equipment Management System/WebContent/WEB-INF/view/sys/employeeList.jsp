@@ -28,15 +28,16 @@
 			<div class="col-md-12">
 				<table style="margin: 20px;">
 					<tr>
-						<td style="text-align: right; padding-left: 200px"><label
-							class="control-label">登录名：</label></td>
+						<td style="padding-left: 100px"><label
+							class="control-label">登录名： </label></td>
 						<td><input type="text" class="form-control" name="login_name"
 							placeholder="请输入用户名" /></td>
+						<td style="padding: 10px"></td>
 						<td style="padding: 10px;"><label class="control-label">姓名：</label>
 						</td>
 						<td><input type="text" class="form-control" name="name"
 							placeholder="请输入员工姓名" /></td>
-						<td style="text-align: right; padding: 10px;"></td>
+						<td style="padding: 10px"></td>
 						<td>
 							<button type="submit" class="btn btn-primary blue" id="query">
 								<i class="glyphicon glyphicon-search"></i>查询
