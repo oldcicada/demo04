@@ -13,6 +13,9 @@ public class PageDto<T> {
 	private List<T> list;//每页数据
 	
 	
+	public void setList(List<T> list) {
+		this.list = list;
+	}
 	public int getCount() {
 		return count;
 	}
@@ -40,8 +43,4 @@ public class PageDto<T> {
 	public List<T> getList() {
 		return list;
 	}
-	public void setList(List<T> list) {
-		this.list = list;
-	}
-	
 }

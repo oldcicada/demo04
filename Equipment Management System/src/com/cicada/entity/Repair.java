@@ -16,20 +16,16 @@ public class Repair extends BaseEntity {
 	private int get_user_id;
 	private Date get_time;
 	private Date done_time;
-	private String resule;
+	private String result;
 	private int money;
 	private String deleted;
+	private String room_name;
+	private String equipment_name;
+	private String send_user_name;
+	private String get_user_name;
 
 	public Repair() {
 
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
 	}
 
 	public String getNumber() {
@@ -38,6 +34,14 @@ public class Repair extends BaseEntity {
 
 	public void setNumber(String number) {
 		this.number = number;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getDescription() {
@@ -54,38 +58,6 @@ public class Repair extends BaseEntity {
 
 	public void setRoom_id(int room_id) {
 		this.room_id = room_id;
-	}
-
-	public String getResule() {
-		return resule;
-	}
-
-	public void setResule(String resule) {
-		this.resule = resule;
-	}
-
-	public int getMoney() {
-		return money;
-	}
-
-	public void setMoney(int money) {
-		this.money = money;
-	}
-
-	public String getDeleted() {
-		return deleted;
-	}
-
-	public void setDeleted(String deleted) {
-		this.deleted = deleted;
-	}
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
 	}
 
 	public int getEquipment_id() {
@@ -112,6 +84,14 @@ public class Repair extends BaseEntity {
 		this.send_time = send_time;
 	}
 
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
 	public int getGet_user_id() {
 		return get_user_id;
 	}
@@ -136,4 +116,67 @@ public class Repair extends BaseEntity {
 		this.done_time = done_time;
 	}
 
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
+	}
+
+	public int getMoney() {
+		return money;
+	}
+
+	public void setMoney(int money) {
+		this.money = money;
+	}
+
+	public String getDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(String deleted) {
+		this.deleted = deleted;
+	}
+
+	public String getRoom_name() {
+		return room_name;
+	}
+
+	public void setRoom_name(String room_name) {
+		this.room_name = room_name;
+	}
+
+	public String getEquipment_name() {
+		return equipment_name;
+	}
+
+	public void setEquipment_name(String equipment_name) {
+		this.equipment_name = equipment_name;
+	}
+
+	public String getSend_user_name() {
+		return send_user_name;
+	}
+
+	public void setSend_user_name(String send_user_name) {
+		this.send_user_name = send_user_name;
+	}
+
+	public String getGet_user_name() {
+		return get_user_name;
+	}
+
+	public void setGet_user_name(String get_user_name) {
+		this.get_user_name = get_user_name;
+	}
+
+	public Repair(int id, int get_user_id, Date done_time, String result, int money) {
+		this.id = id;
+		this.get_user_id = get_user_id;
+		this.done_time = done_time;
+		this.result = result;
+		this.money = money;
+	}
 }

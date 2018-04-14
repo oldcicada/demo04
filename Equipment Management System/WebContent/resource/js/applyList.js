@@ -52,7 +52,7 @@ function queryPage(){
 	var name=$("input[name=name]").val();
 	var type=$("select[name=type]").val();
 	var state=$("select[name=state]").val();
-	$.post("view/eqiup/applyList",
+	$.post("view/equip/applyList",
 			{"pageIndex":pageIndex,"pageSize":pageSize,"name":name,"state":state,"type":type},
 			function(data,status){
 				//字符串转成json对象
@@ -62,13 +62,14 @@ function queryPage(){
 					$("#content").empty();
 					for(var i=0;i<list.length;i++){
 						var content="<tr><td>"+(i+1)
-						+"</td><td>"+list[i].number
-						+"</td><td>"+list[i].title
+						+"</td><td>"+list[i].equipment_name
 						+"</td><td>"+list[i].room_name
 						+"</td><td>" +list[i].state
-						+"</td><td class='text-center'><a href='view/equip/applyShow?id="+list[i].id+"'>查看详情</a> "
-						+"<a href='view/equip/applyEdit?id="+list[i].id+"'>立即处理</a>"
-						+"</td></tr>";
+						+"</td><td class='text-center'><a href='view/equip/applyShow?id="+list[i].id+"'>查看详情</a> ";
+						if("未处理" === list[i].state){
+							content+="<a href='view/equip/applyEdit?id="+list[i].id+"'>立即处理</a>"
+						}
+						content+="</td></tr>";
 						$("#content").append(content);
 					}
 				}

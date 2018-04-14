@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.cicada.common.DictionaryUtil;
 import com.cicada.common.PageDto;
 import com.cicada.dao.RepairDao;
 import com.cicada.entity.Repair;
@@ -28,6 +29,9 @@ public class RepairServiceImpl implements RepairService {
 			rd = sqlSession.getMapper(RepairDao.class);
 			int count=rd.getRepairPageCount(map);
 			List<Repair> repairList = rd.getRepairPage(map);
+			for (Repair repair : repairList) {
+				repair.setState(DictionaryUtil.queryDictionaryName("repairstate", repair.getState()));
+			}
 			PageDto<Repair> dto=new PageDto<>();
 			dto.setList(repairList);
 			dto.setPageIndex(pageIndex);
@@ -35,5 +39,21 @@ public class RepairServiceImpl implements RepairService {
 			dto.setCount(count);
 			dto.setPageTotal(count%pageSize==0?count/pageSize:count/pageSize+1);
 			return dto;
+		}
+		//处理维修请求
+		public void updateState(Repair repair) {
+			sqlSession = SqlSessionFactoryUtil.getSqlSession();
+			rd = sqlSession.getMapper(RepairDao.class);
+			rd.updateState(repair);
+			sqlSession.commit();
+			sqlSession.close();
+		}
+		// 根据id获得repair信息
+		public Repair getRepairMessage(int id) {
+			sqlSession = SqlSessionFactoryUtil.getSqlSession();
+			rd = sqlSession.getMapper(RepairDao.class);
+			Repair repair = rd.getRepairMessage(id);
+			sqlSession.close();
+			return repair;
 		}
 }

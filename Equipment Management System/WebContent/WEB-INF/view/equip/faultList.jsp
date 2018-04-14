@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ include file="/base.jsp" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
+    <%@ include file="/base.jsp" %>
 			<link rel="stylesheet" type="text/css" href="resource/css/bootstrap.min.css"/>
 			<link rel="stylesheet" type="text/css" href="resource/css/common.css"/>
 	</head>
@@ -30,91 +31,76 @@
 					故障列表 </a>
 				</li>
 			</ul>
-			<div class="row">
-				<div class="col-md-12 alltable" >
-						<form action="view/equip/faultList" style="margin: 20px;">
-							<table style="width:100%;">
-								<tr>
-									<td style="text-align: right;padding: 10px;"><label class="control-label">设备类型：</label></td>
-									<td>
-										<select name="classify">
-											<option>请选择类型</option>
-										</select>
-									</td>
-									<td style="text-align: right;padding: 10px;">设备名称：</td>
-									<td><input type="text" class="form-control" name="userName" placeholder="请输入设备名称"/></td>
-									<td style="text-align: right;padding: 10px;">故障状态：</td>
-									<td>
-										<select name="classify">
-											<option>请选择类型</option>
-										</select>
-									</td>
-									<td style="text-align: right;padding: 10px;"></td>
-									<td>
-										<button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i>查询</button>
-										<button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-refresh"></i>重置</button>
-									</td>
-								</tr>
-							</table>
-						</form>
-					</div>
-				</div>
+		<div class="row">
+			<div class="col-md-12">
+				<table style="margin:20px">
+					<tr>
+						<td style="padding-left: 100px;"><label class="control-label">设备类型：</label></td>
+						<td><select name="type" class="form-control">
+								<option value="">请选择</option>
+								<c:forEach items="${equipmentTypes}" var="type">
+									<option value="${type.value}">${type.tag}</option>
+								</c:forEach>
+						</select></td>
+						<td style="padding: 10px"></td>
+						<td><label class="control-label">名称：</label></td>
+						<td><input type="text" class="form-control" name="name" placeholder="请输入设备名称" /></td>
+						<td style="padding: 10px"></td>
+						<td><label class="control-label">维修状态：</label></td>
+						<td><select name="state" class="form-control">
+								<option value="">请选择</option>
+								<c:forEach items="${repairsTates}" var="state">
+									<option value="${state.value}">${state.tag}</option>
+								</c:forEach>
+						</select></td>
+						<td style="padding: 10px"></td>
+						<td>
+							<button type="submit" id="query" class="btn btn-primary">
+								<i class="glyphicon glyphicon-search"></i> 查询
+							</button>
+							<button type="reset" id="reset" class="btn btn-default">
+								<i class="glyphicon glyphicon-refresh"></i> 重置
+							</button>
+						</td>
+					</tr>
+				</table>
 			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<div class="table-scrollable alltable">
-						<table class="table table-striped table-bordered table-hover dataTable no-footer">
-							<thead>
-								<tr>
-									<th class="text-center">故障编号</th>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="table-scrollable alltable">
+					<table
+						class="table table-striped table-bordered table-hover dataTable no-footer">
+						<thead>
+							<tr>
+								<th class="text-center">故障编号</th>
 									<th class="text-center">故障标题</th>
 									<th class="text-center">房间地址</th>
 									<th class="text-center">故障状态</th>
 									<th class="text-center">操作</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>201801019900990</td>
-									<td>电脑出现蓝屏</td>
-									<td>机房2</td>
-									<td>待处理</td>
-									<td class="text-center"><a href="#">查看详情</a>
-										<a href="#">立即处理</a>
-									</td>
-								</tr>
-								
-								<tr>
-									<td>201801019900990</td>
-									<td>电脑出现蓝屏</td>
-									<td>机房2</td>
-									<td>待处理</td>
-									<td class="text-center"><a href="#">查看详情</a>
-										<a href="#">立即处理</a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+							</tr>
+						</thead>
+						<tbody id="content">
+						</tbody>
+					</table>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-5 col-sm-12">
-					<div class="dataTables_info" style="padding-top: 8px;" role="status" aria-live="polite">显示 1 到 10  共 25 记录</div>
-				</div>
-				<div class="col-md-7 col-sm-12">
-					<div style="float: right;margin: 0px;height: 40px;" id="sample_1_paginate">
-						<ul class="pagination" style="visibility: visible;">
-							<li class="prev disabled"><a href="#" title="首页"><i class="glyphicon glyphicon-menu-left"></i></a></li>
-							<li class="prev disabled"><a href="#" title="上一页"><i class="glyphicon glyphicon-menu-left"></i><i class="glyphicon glyphicon-menu-left"></i></a></li>
-							<li class="active"><a href="#">1</a></li><li><a href="#">2</a></li>
-							<li><a href="#">3</a></li><li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li class="next"><a href="#" title="下一页"><i class="glyphicon glyphicon-menu-right"></i></a></li>
-							<li class="next"><a href="#" title="尾页"><i class="glyphicon glyphicon-menu-right"></i><i class="glyphicon glyphicon-menu-right"></i></a></li>
-						</ul>
-					</div>
+		</div>
+		<div class="row">
+			<div class="col-md-5 col-sm-12">
+				<div id="pageMessage" style="padding: 8px 20px;"></div>
+			</div>
+			<div class="col-md-7 col-sm-12">
+				<div style="float: right; margin-right: 20px;" id="pageControl">
+					<a href="javascript:void(0)" class="page" id="first">首页</a>&nbsp; <a
+						href="javascript:void(0)" class="page" id="previou">上页</a>&nbsp; <a
+						href="javascript:void(0)" class="page" id="next">下页</a>&nbsp; <a
+						href="javascript:void(0)" class="page" id="last">末页</a>
 				</div>
 			</div>
-	</body>
+		</div>
+	</div>
+	<script type="text/javascript" src="resource/js/jquery.min.js"></script>
+	<script type="text/javascript" src="resource/js/faultList.js"></script>
+</body>
 </html>

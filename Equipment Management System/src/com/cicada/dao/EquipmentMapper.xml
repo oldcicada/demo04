@@ -43,4 +43,7 @@
 		and e.name like #{name}
 		</if>
 	</select>
+	<update id="deleteById" parameterType="int">
+	update equipment set deleted=1 where id=#{id}
+	</update>
 </mapper>

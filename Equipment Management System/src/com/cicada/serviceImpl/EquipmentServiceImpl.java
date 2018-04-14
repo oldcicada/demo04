@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.cicada.common.DictionaryUtil;
 import com.cicada.common.PageDto;
 import com.cicada.dao.EquipmentDao;
 import com.cicada.entity.Equipment;
@@ -29,6 +30,9 @@ public class EquipmentServiceImpl implements EquipmentService {
 		ed = sqlSession.getMapper(EquipmentDao.class);
 		int count=ed.getEquipmentPageCount(map);
 		List<Equipment> equipList = ed.getEquipmentPage(map);
+		for (Equipment equipment : equipList) {
+			equipment.setState(DictionaryUtil.queryDictionaryName("equipstate", equipment.getState()));
+		}
 		PageDto<Equipment> dto=new PageDto<>();
 		dto.setList(equipList);
 		dto.setPageIndex(pageIndex);
@@ -36,5 +40,11 @@ public class EquipmentServiceImpl implements EquipmentService {
 		dto.setCount(count);
 		dto.setPageTotal(count%pageSize==0?count/pageSize:count/pageSize+1);
 		return dto;
+	}
+	//根据id删除设备
+	public void deleteById(int equipmentId) {
+		sqlSession = SqlSessionFactoryUtil.getSqlSession();
+		ed = sqlSession.getMapper(EquipmentDao.class);
+		ed.deleteById(equipmentId);
 	}
 }

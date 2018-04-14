@@ -10,4 +10,6 @@ public interface EquipmentDao {
 	List<Equipment> getEquipmentPage(Map<Object, Object> map);
 	//查询equipment分页数据
 	int getEquipmentPageCount(Map<Object, Object> map);
+	//根据id删除设备
+	void deleteById(int equipmentId);
 }

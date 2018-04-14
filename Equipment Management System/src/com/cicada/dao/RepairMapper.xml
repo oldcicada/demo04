@@ -3,27 +3,76 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cicada.dao.RepairDao">
-<!-- <select id="getRepairPage" parameterType="map" resultType="repair">
+<select id="getRepairPage" parameterType="map" resultType="repair">
 SELECT 
-  `id`,
-  `number`,
-  `title`,
-  `description`,
-  `room_id`,
-  `euipment_id`,
-  `state`,
+ repair. `id`,
+  repair.`number`,
+  repair.`title`,
+ repair. `description`,
+  repair.`state`,
+  e.name as equipment_name,
+  room.number as room_name
 FROM
   repair 
-  left join room on room.id=repair.room_id
+  left join room 
+  on repair.`room_id`=room.id
+  left join equipment e 
+  on repair.equipment_id=e.id
+  where repair.deleted=0
   <if test="#{name}!=null">
-  and name like #{name}
+  and e.name like #{name}
   </if> 
   <if test="#{type}!=null">
-  and type like #{type}
+  and e.type like #{type}
   </if> 
   <if test="#{state}!=null">
-  and state like #{state}
+  and repair.state like #{state}
   </if> 
 LIMIT #{start}, #{end} 
-</select>-->
+</select>
+<select id="getRepairPageCount" parameterType="map" resultType="int">
+SELECT count(1) FROM repair 
+   left join room 
+   on repair.`room_id`=room.id
+  left join equipment e on
+   repair.equipment_id=e.id
+  where repair.deleted=0
+  <if test="#{name}!=null">
+  and e.name like #{name}
+  </if> 
+  <if test="#{type}!=null">
+  and e.type like #{type}
+  </if> 
+  <if test="#{state}!=null">
+  and repair.state like #{state}
+  </if> 
+</select>
+<update id="updateState" parameterType="repair">
+update repair set 
+state=1,get_user_id=#{get_user_id},get_time=now(),done_time=#{done_time},result=#{result},money=#{money}
+ where deleted =0 and id=#{id} 
+</update>
+<select id="getRepairMessage" parameterType="int" resultType="repair">
+SELECT 
+  r.`number`,
+  r.`title`,
+  r.`description`,
+  room.number AS room_name,
+  e.name AS equipment_name,
+  user.`login_name` AS send_user_name,
+  r.`send_time`,
+  r.`state`,
+  user.`login_name` AS get_user_name,
+  r.`get_time`,
+  r.`done_time`,
+  r.`result`,
+  r.`money`
+FROM
+  `repair`  r
+  LEFT JOIN room ON  r.`room_id`=room.id
+   LEFT JOIN equipment e ON  e.id= r.`equipment_id`
+   LEFT JOIN `user` ON  user.id=r.`send_user_id` 
+    LEFT JOIN `user` u ON  u.id=r.`get_user_id` 
+  WHERE r.deleted=0 AND r.id={id}
+</select>
 </mapper>

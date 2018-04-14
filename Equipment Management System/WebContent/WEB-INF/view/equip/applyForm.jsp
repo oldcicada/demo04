@@ -42,16 +42,14 @@
 							<form action="view/equip/applyForm" method="post" class="form-horizontal">
 								<div class="form-body">
 									<div class="form-group">
-										<label class="control-label col-md-3" for="inputWarning">设备名称：</label>
-										<div class="col-md-4">
-											<input type="name" class="form-control" name="email" placeholder="请输入一句话故障">
-										</div>
+										<label class="control-label col-md-3">设备名称：</label>
+										<label class="control-label col-md-1">${name }</label>
 									</div>
 									<div class="form-group">
 										<label class="control-label col-md-3" for="inputError">故障标题：</label>
 										<div class="col-md-4">
 											<div class="input-group">
-												<input type="" class="form-control" name="email" placeholder="请输入一句话故障">
+												<input type="text" class="form-control" name="email" placeholder="请输入一句话故障">
 												<span class="input-group-addon">
 												</span>
 											</div>

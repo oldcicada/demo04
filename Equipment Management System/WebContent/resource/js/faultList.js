@@ -52,8 +52,8 @@ function queryPage(){
 	var name=$("input[name=name]").val();
 	var type=$("select[name=type]").val();
 	var state=$("select[name=state]").val();
-	$.post("view/equip/equipList",
-			{"pageIndex":pageIndex,"pageSize":pageSize,"name":name,"type":type,"state":state},
+	$.post("view/equip/applyList",
+			{"pageIndex":pageIndex,"pageSize":pageSize,"name":name,"state":state,"type":type},
 			function(data,status){
 				//字符串转成json对象
 				data=eval("("+data+")");
@@ -61,12 +61,11 @@ function queryPage(){
 				if(status){
 					$("#content").empty();
 					for(var i=0;i<list.length;i++){
-						var content="<tr><td>"+(i+1)
-						+"</td><td>"+list[i].name
+						var content="<tr><td>"+list[i].number
+						+"</td><td>"+list[i].title
 						+"</td><td>"+list[i].room_name
 						+"</td><td>" +list[i].state
-						+"</td><td class='text-center'><a href='view/equip/equipForm?name="+list[i].name+"'>故障申报 </a>&nbsp;"
-						+"<a href='view/equip/equipDelete?id="+list[i].id+"'> 删除</a>"
+						+"</td><td class='text-center'><a href='view/equip/applyShow?id="+list[i].id+"'>查看详情</a> ";
 						+"</td></tr>";
 						$("#content").append(content);
 					}

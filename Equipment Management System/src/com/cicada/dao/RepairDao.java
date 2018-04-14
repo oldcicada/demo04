@@ -10,5 +10,9 @@ public interface RepairDao {
 	int getRepairPageCount(Map<Object, Object> map);
 
 	List<Repair> getRepairPage(Map<Object, Object> map);
+	//处理维修请求
+	void updateState(Repair repair);
 
+	// 根据id获得repair信息
+	Repair getRepairMessage(int id);
 }

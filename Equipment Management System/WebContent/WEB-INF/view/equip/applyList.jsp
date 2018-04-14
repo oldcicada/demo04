@@ -32,7 +32,7 @@
 						<td style="padding-left: 100px;"><label class="control-label">设备类型：</label></td>
 						<td><select name="type" class="form-control">
 								<option value="">请选择</option>
-								<c:forEach items="${repairTypes}" var="type">
+								<c:forEach items="${equipmentTypes}" var="type">
 									<option value="${type.value}">${type.tag}</option>
 								</c:forEach>
 						</select></td>
@@ -40,10 +40,10 @@
 						<td><label class="control-label">名称：</label></td>
 						<td><input type="text" class="form-control" name="name" placeholder="请输入设备名称" /></td>
 						<td style="padding: 10px"></td>
-						<td><label class="control-label">状态：</label></td>
+						<td><label class="control-label">维修状态：</label></td>
 						<td><select name="state" class="form-control">
 								<option value="">请选择</option>
-								<c:forEach items="${repairStates}" var="state">
+								<c:forEach items="${repairsTates}" var="state">
 									<option value="${state.value}">${state.tag}</option>
 								</c:forEach>
 						</select></td>
@@ -65,12 +65,12 @@
 				<div class="table-scrollable alltable">
 					<table
 						class="table table-striped table-bordered table-hover dataTable no-footer">
-						<thead id="content">
+						<thead>
 							<tr>
 								<th class="text-center">编号</th>
 								<th class="text-center">名称</th>
 								<th class="text-center">房间地址</th>
-								<th class="text-center">状态</th>
+								<th class="text-center">故障状态</th>
 								<th class="text-center">操作</th>
 							</tr>
 						</thead>
