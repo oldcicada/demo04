@@ -30,8 +30,7 @@
 				<li><i class="glyphicon glyphicon-home"></i> <a
 					href="view/mime/portal"> 我的工作台</a> <i
 					class="glyphicon glyphicon-chevron-right"></i></li>
-				<li><a href="view/mime/userinfo"> 个人信息</a> <i
-					class="glyphicon glyphicon-chevron-right"></i></li>
+				<li><a href="view/mime/userinfo"> 个人信息</a>
 			</ul>
 		</div>
 		<!-- END PAGE HEADER-->

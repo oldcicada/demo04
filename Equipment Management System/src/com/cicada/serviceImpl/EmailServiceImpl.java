@@ -30,4 +30,22 @@ public class EmailServiceImpl implements EmailService {
 			sqlSession.close();
 			return time;
 	 }
+	//根据时间获得邮件id
+	 public int getEmailId(long send_time) {
+		 sqlSession = SqlSessionFactoryUtil.getSqlSession();
+			ed = sqlSession.getMapper(EmailDao.class);
+			Date date = new Date(send_time);
+			int id = ed.getEmailId(date);
+			sqlSession.close();
+			return id;
+	 }
+	//根据email获得邮件信息
+		public Email getEmailMessage(int id) {
+			 sqlSession = SqlSessionFactoryUtil.getSqlSession();
+			 sqlSession = SqlSessionFactoryUtil.getSqlSession();
+				ed = sqlSession.getMapper(EmailDao.class);
+				Email email = ed.getEmailMessage(id);
+				sqlSession.close();
+				return email;
+		}
 }

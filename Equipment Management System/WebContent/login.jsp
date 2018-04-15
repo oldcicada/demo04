@@ -74,6 +74,9 @@
 		charset="utf-8"></script>
 	<script type="text/javascript">
 		$(function() {
+			if(top.location!==self.location){ 
+			top.location.href=self.location.href;
+			}
 			$("#forget").click(function() {
 				$(".body").first().hide();
 				$(".forget").show()

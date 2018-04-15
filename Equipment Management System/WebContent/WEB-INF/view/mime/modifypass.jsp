@@ -17,8 +17,7 @@
 				<li><i class="glyphicon glyphicon-home"></i><a
 					href="view/mime/portal"> 我的工作台</a> <i
 					class="glyphicon glyphicon-chevron-right"></i></li>
-				<li><a href="view/mime/modifypass"> 密码修改</a> <i
-					class="glyphicon glyphicon-chevron-right"></i></li>
+				<li><a href="view/mime/modifypass"> 密码修改</a>
 			</ul>
 		</div>
 		<!-- END PAGE HEADER-->
@@ -39,7 +38,7 @@
 									</span> <input type="email" class="form-control" name="email"
 										placeholder="请输入Email">
 								</div>
-								<span class="help-block"> 邮件发送成功后，登录邮箱点击链接修改密码 </span>
+								<span class="help-block"> ${emailMessage} </span>
 							</div>
 						</div>
 					</div>
