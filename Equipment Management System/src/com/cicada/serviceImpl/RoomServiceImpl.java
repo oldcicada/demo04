@@ -82,4 +82,12 @@ public class RoomServiceImpl implements RoomService {
 		sqlSession.close();
 		return room;
 	}
+	//获取所有房间id和number信息
+		public List<Room> getRoom(){
+			sqlSession = SqlSessionFactoryUtil.getSqlSession();
+			rd = sqlSession.getMapper(RoomDao.class);
+			List<Room> list=rd.getRoom();
+			sqlSession.close();
+			return list;
+		}
 }

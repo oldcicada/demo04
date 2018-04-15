@@ -12,5 +12,7 @@ public interface RepairService {
 
 	// 根据id获得repair信息
 	Repair getRepairMessage(int id);
+	//添加repair信息
+	void addRepair(Repair repair);
 
 }

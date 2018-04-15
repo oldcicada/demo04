@@ -28,9 +28,9 @@
 		<div class="page-bar">
 			<ul class="page-breadcrumb">
 				<li><i class="glyphicon glyphicon-home"></i> <a
-					href="view/mime/portal">我的工作台</a> <i
+					href="view/mime/portal"> 我的工作台</a> <i
 					class="glyphicon glyphicon-chevron-right"></i></li>
-				<li><a href="view/mime/userinfo">个人信息</a> <i
+				<li><a href="view/mime/userinfo"> 个人信息</a> <i
 					class="glyphicon glyphicon-chevron-right"></i></li>
 			</ul>
 		</div>

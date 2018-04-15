@@ -46,4 +46,28 @@
 	<update id="deleteById" parameterType="int">
 	update equipment set deleted=1 where id=#{id}
 	</update>
+	<select id="getgetRoomId" parameterType="int" resultType="int">
+	select room_id from equipment where id=#{id} and deleted=0
+	</select>
+	<insert id="addEquipment" parameterType="equipment">
+	INSERT INTO equipment(
+  `name`,
+  `code`,
+  `type`,
+  `remark`,
+  `state`,
+  `room_id`,
+  `deleted`
+) 
+VALUES
+  (
+    #{name},
+    #{code},
+    #{type},
+    #{remark},
+    #{state},
+    #{room_id},
+    0
+  ) 
+	</insert>
 </mapper>

@@ -1,5 +1,7 @@
 package com.cicada.service;
 
+import java.util.List;
+
 import com.cicada.common.PageDto;
 import com.cicada.entity.Room;
 
@@ -18,4 +20,6 @@ public interface RoomService {
 	
 	// 根据id获取信息
 	Room getRoomMessageById(int id);
+//获取所有房间id和number信息
+	List<Room> getRoom();
 }

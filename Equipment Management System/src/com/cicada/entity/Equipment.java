@@ -8,7 +8,7 @@ public class Equipment extends BaseEntity {
 	private String type;
 	private String remark;
 	private String state;
-	private int roomId;
+	private int room_id;
 	private String deleted;
 	//用于存储房间名称
 	private String room_name;
@@ -65,12 +65,12 @@ public class Equipment extends BaseEntity {
 		this.state = state;
 	}
 
-	public int getRoomId() {
-		return roomId;
+	public int getRoom_id() {
+		return room_id;
 	}
 
-	public void setRoomId(int roomId) {
-		this.roomId = roomId;
+	public void setRoom_id(int room_id) {
+		this.room_id = room_id;
 	}
 
 	public String getDeleted() {
@@ -81,13 +81,13 @@ public class Equipment extends BaseEntity {
 		this.deleted = deleted;
 	}
 
-	public Equipment(String name, String code, String type, String remark, String state, int roomId) {
+	public Equipment(String name, String code, String type, String remark, String state, int room_id) {
 		this.name = name;
 		this.code = code;
 		this.type = type;
 		this.remark = remark;
 		this.state = state;
-		this.roomId = roomId;
+		this.room_id = room_id;
 	}
 	
 }

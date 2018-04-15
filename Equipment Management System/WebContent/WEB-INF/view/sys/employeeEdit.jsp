@@ -15,9 +15,9 @@
 		<!-- BEGIN PAGE HEADER-->
 		<div class="page-bar">
 			<ul class="page-breadcrumb">
-				<li><i class="glyphicon glyphicon-home"></i> <a href="#">系统管理</a>
+				<li><i class="glyphicon glyphicon-home"></i> 系统管理
 					<i class="glyphicon glyphicon-chevron-right"></i></li>
-				<li><a href="view/sys/employeeList">员工管理</a></li>
+				<li><a href="view/sys/employeeList"> 员工管理</a></li>
 			</ul>
 		</div>
 		<!-- END PAGE HEADER-->

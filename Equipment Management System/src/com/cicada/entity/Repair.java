@@ -179,4 +179,14 @@ public class Repair extends BaseEntity {
 		this.result = result;
 		this.money = money;
 	}
+
+	public Repair(String number, String title, String description, int room_id, int equipment_id, int send_user_id) {
+		this.number = number;
+		this.title = title;
+		this.description = description;
+		this.room_id = room_id;
+		this.equipment_id = equipment_id;
+		this.send_user_id = send_user_id;
+	}
+	
 }

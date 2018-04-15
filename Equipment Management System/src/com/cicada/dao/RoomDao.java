@@ -18,4 +18,6 @@ public interface RoomDao {
 	void add(Room room);
 	//根据id获取信息
 	Room getRoomMessageById(int id);
+	//获取所有房间id和number信息
+	List<Room> getRoom();
 }

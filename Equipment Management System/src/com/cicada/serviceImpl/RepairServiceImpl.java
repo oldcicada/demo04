@@ -56,4 +56,12 @@ public class RepairServiceImpl implements RepairService {
 			sqlSession.close();
 			return repair;
 		}
+		//添加repair信息
+		public void addRepair(Repair repair) {
+			sqlSession = SqlSessionFactoryUtil.getSqlSession();
+			rd = sqlSession.getMapper(RepairDao.class);
+			rd.addRepair(repair);
+			sqlSession.commit();
+			sqlSession.close();
+		}
 }

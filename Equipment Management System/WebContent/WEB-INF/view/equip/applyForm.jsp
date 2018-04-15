@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ include file="/base.jsp" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
+    <%@ include file="/base.jsp" %>
 			<link rel="stylesheet" type="text/css" href="resource/css/bootstrap.min.css"/>
 			<link rel="stylesheet" type="text/css" href="resource/css/common.css"/>
 	</head>
@@ -13,12 +13,11 @@
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
 					<li>
-						<i class="glyphicon glyphicon-home"></i>
-						<a href="#">设备管理</a>
+						<i class="glyphicon glyphicon-home"></i> 设备管理
 						<i class="glyphicon glyphicon-chevron-right"></i>
 					</li>
 					<li>
-						<a href="#">设备库管理</a>
+						<a href="view/equip/applyList"> 设备报修处理</a>
 					</li>
 				</ul>
 			</div>
@@ -26,9 +25,9 @@
 			</div>
 			<!-- END PAGE HEADER-->
 			<ul class="nav nav-tabs">
-				<li >
-					<a href="view/eqiup/applyList" >
-					设备列表 </a>
+				<li>
+					<a href="view/equip/applyList" >
+					申报列表 </a>
 				</li>
 				<li class="active" >
 					<a href="view/equip/applyForm">
@@ -41,24 +40,25 @@
 							<!-- BEGIN FORM-->
 							<form action="view/equip/applyForm" method="post" class="form-horizontal">
 								<div class="form-body">
+								<input type="hidden" class="form-control" name="id" value="${equipmentId }">
 									<div class="form-group">
 										<label class="control-label col-md-3">设备名称：</label>
 										<label class="control-label col-md-1">${name }</label>
 									</div>
 									<div class="form-group">
-										<label class="control-label col-md-3" for="inputError">故障标题：</label>
+										<label class="control-label col-md-3">故障标题：</label>
 										<div class="col-md-4">
 											<div class="input-group">
-												<input type="text" class="form-control" name="email" placeholder="请输入一句话故障">
+												<input type="text" class="form-control" name="title" placeholder="请输入一句话故障">
 												<span class="input-group-addon">
 												</span>
 											</div>
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="control-label col-md-3" for="inputSuccess">故障详情：</label>
+										<label class="control-label col-md-3">故障详情：</label>
 										<div class="col-md-4">
-											<textarea></textarea>
+											<textarea name="description"></textarea>
 										</div>
 									</div>
 									<div class="form-group">

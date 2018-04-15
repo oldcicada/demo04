@@ -70,4 +70,7 @@ select id,`address`,
   `phone`,
   `state` from room where deleted=0 and id=#{id}
 </select>
+<select id="getRoom" resultType="room">
+select id,number from room where deleted=0 and state=0
+</select>
 </mapper>

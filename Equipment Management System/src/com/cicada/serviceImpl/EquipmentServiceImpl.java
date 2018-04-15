@@ -46,5 +46,24 @@ public class EquipmentServiceImpl implements EquipmentService {
 		sqlSession = SqlSessionFactoryUtil.getSqlSession();
 		ed = sqlSession.getMapper(EquipmentDao.class);
 		ed.deleteById(equipmentId);
+		sqlSession.commit();
+		sqlSession.close();
 	}
+	//获取room_id
+		public int getRoomId(int equipmentId) {
+			sqlSession = SqlSessionFactoryUtil.getSqlSession();
+			ed = sqlSession.getMapper(EquipmentDao.class);
+			int room_id=ed.getgetRoomId(equipmentId);
+			sqlSession.close();
+			return room_id;
+		}
+		//添加设备
+		public void addEquipment(Equipment equip) {
+			sqlSession = SqlSessionFactoryUtil.getSqlSession();
+			ed = sqlSession.getMapper(EquipmentDao.class);
+			ed.addEquipment(equip);
+			sqlSession.commit();
+			sqlSession.close();
+		}
 }
+

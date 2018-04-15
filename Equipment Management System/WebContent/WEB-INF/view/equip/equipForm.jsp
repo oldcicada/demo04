@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ include file="/base.jsp" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
+    <%@ include file="/base.jsp" %>
 			<link rel="stylesheet" type="text/css" href="resource/css/bootstrap.min.css"/>
 			<link rel="stylesheet" type="text/css" href="resource/css/common.css"/>
 	</head>
@@ -14,12 +15,11 @@
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
 					<li>
-						<i class="glyphicon glyphicon-home"></i>
-						<a href="index-2.html">设备管理</a>
+						<i class="glyphicon glyphicon-home"></i> 设备管理
 						<i class="glyphicon glyphicon-chevron-right"></i>
 					</li>
 					<li>
-						<a href="#">设备库管理</a>
+						<a href="view/equip/equipList"> 设备库管理</a>
 					</li>
 				</ul>
 			</div>
@@ -38,93 +38,77 @@
 			<div class="row">
 				<div class="col-md-12">
 							<!-- BEGIN FORM-->
-							<form action="view/equip/equipForm" method="post" class="form-horizontal">
-								<div class="form-body">
-									<div class="form-group">
-										<label for="exampleInputFile" class="col-md-3 control-label">头像：</label>
-										<div class="col-md-9">
-											<input type="file" id="exampleInputFile">
-											<p class="help-block">
-												 130:130的图片
-											</p>
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="control-label col-md-3" for="inputWarning">用户名：<span class="required">
-										* </span></label>
-										<div class="col-md-4">
-											<input type="text" class="form-control" name="userName" placeholder="请输入用户名"/>
-											<span class="help-block">
-											用户登录名 ，数字字母组成长度在5-20之间</span>
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="control-label col-md-3" for="inputError">邮箱：</label>
-										<div class="col-md-4">
-											
-											<div class="input-group">
-												<input type="email" class="form-control" name="email" placeholder="请输入Email">
-												<span class="input-group-addon">
-												<i class="glyphicon glyphicon-envelope"></i>
-												</span>
-											</div>
-											<span class="help-block">
-											请输入正确的邮箱，可以用来找回密码使用 </span>
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="control-label col-md-3" for="inputSuccess">姓名：</label>
-										<div class="col-md-4">
-											<input type="text" class="form-control" name="realName" placeholder="请输入真实姓名"/>
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="control-label col-md-3" for="inputSuccess">手机：</label>
-										<div class="col-md-4">
-											<input type="text" class="form-control" name="realName" placeholder="请输入电话号码"/>
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="col-md-3 control-label">性别：</label>
-										<div class="col-md-9">
-											<div class="radio-list">
-												<label class="radio-inline">
-													<input type="radio" name="sex" value="1" checked="checked">男 </label>
-												<label class="radio-inline">
-													<input type="radio" name="sex"  value="2" >女 </label>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="col-md-3 control-label">角色：</label>
-										<div class="col-md-9">
-											<div class="checkbox-list">
-												<label class="checkbox-inline">
-													<input type="checkbox" id="inlineCheckbox21" checked="checked" value="option1">
-													超级管理员 
-												</label>
-												<label class="checkbox-inline">
-													<input type="checkbox" id="inlineCheckbox22" value="option2">
-														 管理员
-												</label>
-												<label class="checkbox-inline">
-													<input type="checkbox" id="inlineCheckbox23" value="option3">
-													维修人员 
-												</label>
-											</div>
-										</div>
-									</div>
+			<div class="form-body">
+				<form action="view/equip/equipForm" method="post"
+					class="form-horizontal">
+						<div class="form-group">
+							<label class="control-label col-md-3">设备名称：</label>
+							<div class="col-md-4">
+								<input type="text" class="form-control" name="name" placeholder="请输入设备名称"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3">编码：</label>
+							<div class="col-md-4">
+								<div class="input-group">
+									<input type="text" class="form-control" name="code"
+										placeholder="请输入英文名称">
 								</div>
-								<div class="form-actions">
-									<div class="row">
-										<div class="col-md-offset-3 col-md-9">
-											<button type="submit" class="btn  btn-primary blue">提交</button>
-											<button type="reset" class="btn btn-default blue"><i class="glyphicon glyphicon-refresh"></i>重置信息</button>
-										</div>
-									</div>
-								</div>
-							</form>
-							<!-- END FORM-->
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3">设备类型：</label>
+							<div class="col-md-4">
+								<select class="form-control" name="type">
+									<option value="">请选择</option>
+									<c:forEach items="${equipmentTypes}" var="type">
+										<option value="${type.value}">${type.tag}</option>
+									</c:forEach>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3">备注：</label>
+							<div class="col-md-4">
+								<input type="text" class="form-control" name="remark"
+									placeholder="请输入备注信息" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3">设备状态：</label>
+							<div class="col-md-4">
+								<select class="form-control" name="state">
+									<option value="">请选择</option>
+									<c:forEach items="${equipmentStates}" var="type">
+										<option value="${type.value}">${type.tag}</option>
+									</c:forEach>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3">所在房间：</label>
+							<div class="col-md-4">
+								<select class="form-control" name="room_id">
+									<option value="">请选择</option>
+									<c:forEach items="${roomList}" var="room">
+										<option value="${room.id}">${room.number}</option>
+									</c:forEach>
+								</select>
+							</div>
+						</div>
+					<div class="form-actions">
+						<div class="row">
+							<div class="col-md-offset-3 col-md-9">
+								<button type="submit" class="btn btn-primary blue">提交</button>
+								<button type="reset" class="btn btn-default blue ">
+									<i class="glyphicon glyphicon-refresh"></i>重置信息
+								</button>
+							</div>
+						</div>
+					</div>
+				</form>
+				</div>
+				<!-- END FORM-->
 				</div>
 			</div>
 		</div>

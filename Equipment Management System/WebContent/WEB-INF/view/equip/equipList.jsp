@@ -15,9 +15,9 @@
 		<!-- BEGIN PAGE HEADER-->
 		<div class="page-bar">
 			<ul class="page-breadcrumb">
-				<li><i class="glyphicon glyphicon-home"></i> <a href="#">设备管理</a>
+				<li><i class="glyphicon glyphicon-home"></i> 设备管理
 					<i class="glyphicon glyphicon-chevron-right"></i></li>
-				<li><a href="#">设备库管理</a></li>
+				<li><a href="view/equip/equipList"> 设备库管理</a></li>
 			</ul>
 		</div>
 		<!-- END PAGE HEADER-->
@@ -71,7 +71,7 @@
 								<th class="text-center">编号</th>
 								<th class="text-center">名称</th>
 								<th class="text-center">房间地址</th>
-								<th class="text-center">状态</th>
+								<th class="text-center">设备状态</th>
 								<th class="text-center">操作</th>
 							</tr>
 						</thead>

@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@ include file="/base.jsp"%>
 <meta charset="UTF-8">
+<%@ include file="/base.jsp"%> 
 <link rel="stylesheet" type="text/css"
 	href="resource/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="resource/css/common.css" />
@@ -15,9 +15,9 @@
 		<!-- BEGIN PAGE HEADER-->
 		<div class="page-bar">
 			<ul class="page-breadcrumb">
-				<li><i class="glyphicon glyphicon-home"></i> <a href="#">系统管理</a>
+				<li><i class="glyphicon glyphicon-home"></i> 系统管理
 					<i class="glyphicon glyphicon-chevron-right"></i></li>
-				<li><a href="view/sys/roleList">角色管理</a></li>
+				<li><a href="view/sys/roleList"> 角色管理</a></li>
 			</ul>
 		</div>
 		<!-- END PAGE HEADER-->

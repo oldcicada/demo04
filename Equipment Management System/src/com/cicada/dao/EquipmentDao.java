@@ -12,4 +12,8 @@ public interface EquipmentDao {
 	int getEquipmentPageCount(Map<Object, Object> map);
 	//根据id删除设备
 	void deleteById(int equipmentId);
+	
+	int getgetRoomId(int equipmentId);
+	//添加设备
+	void addEquipment(Equipment equip);
 }

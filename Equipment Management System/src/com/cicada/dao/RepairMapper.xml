@@ -75,4 +75,39 @@ FROM
     LEFT JOIN `user` u ON  u.id=r.`get_user_id` 
   WHERE r.deleted=0 AND r.id={id}
 </select>
+<insert id="addRepair" parameterType="repair">
+INSERT INTO repair (
+  `number`,
+  `title`,
+  `description`,
+  `room_id`,
+  `equipment_id`,
+  `send_user_id`,
+  `send_time`,
+  `state`,
+  `get_user_id`,
+  `get_time`,
+  `done_time`,
+  `result`,
+  `money`,
+  `deleted`
+) 
+VALUES
+  (
+    #{number},
+    #{title},
+    #{description},
+    #{room_id},
+    #{equipment_id},
+    #{send_user_id},
+    now(),
+    0,
+    null,
+    null,
+    null,
+    null,
+    null,
+    0
+  ) 
+</insert>
 </mapper>

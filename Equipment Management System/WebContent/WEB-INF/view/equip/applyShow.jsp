@@ -13,9 +13,9 @@
 	<div class="page-container">
 		<div class="page-bar">
 			<ul class="page-breadcrumb">
-				<li><i class="glyphicon glyphicon-home"></i> <a href="#">设备管理</a>
+				<li><i class="glyphicon glyphicon-home"></i> 设备管理
 					<i class="glyphicon glyphicon-chevron-right"></i></li>
-				<li><a href="view/equip/applyList">故障列表</a></li>
+				<li><a href="view/equip/applyList"> 故障列表</a></li>
 			</ul>
 		</div>
 		<div class="clearfix"></div>

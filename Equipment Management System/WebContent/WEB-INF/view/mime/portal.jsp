@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/base.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<%@ include file="/base.jsp"%>
 <link rel="stylesheet" type="text/css"
 	href="resource/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="resource/css/common.css" />
@@ -15,9 +15,9 @@
 		<div class="page-bar">
 			<ul class="page-breadcrumb">
 				<li><i class="glyphicon glyphicon-home"></i> <a
-					href="view/mime/portal">我的工作台</a> <i
+					href="view/mime/portal"> 我的工作台</a> <i
 					class="glyphicon glyphicon-chevron-right"></i></li>
-				<li><a href="view/mime/portal">信息和报表</a></li>
+				<li><a href="view/mime/portal"> 信息和报表</a></li>
 			</ul>
 		</div>
 		<!-- END PAGE HEADER-->

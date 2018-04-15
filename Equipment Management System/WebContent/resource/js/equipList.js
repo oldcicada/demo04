@@ -64,10 +64,11 @@ function queryPage(){
 						var content="<tr><td>"+(i+1)
 						+"</td><td>"+list[i].name
 						+"</td><td>"+list[i].room_name
-						+"</td><td>" +list[i].state
-						+"</td><td class='text-center'><a href='view/equip/equipForm?name="+list[i].name+"'>故障申报 </a>&nbsp;"
-						+"<a href='view/equip/equipDelete?id="+list[i].id+"'> 删除</a>"
-						+"</td></tr>";
+						+"</td><td>" +list[i].state+"</td><td class='text-center'>";
+						if(list[i].state=="正常"){
+						content=content+"<a href='view/equip/applyForm?name="+list[i].name+"&id="+list[i].id+"'>故障申报 </a>&nbsp;"
+						}
+						content=content+"<a href='view/equip/equipDelete?id="+list[i].id+"'> 删除</a></td></tr>";
 						$("#content").append(content);
 					}
 				}

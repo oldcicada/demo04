@@ -12,18 +12,13 @@
 	<body>
 		<div class="page-container">
 			<!-- BEGIN PAGE HEADER-->
-			<div class="page-bar">
-				<ul class="page-breadcrumb">
-					<li>
-						<i class="fa fa-home"></i>
-						<a  href="#">设备管理</a>
-						<i class="fa fa-angle-right"></i>
-					</li>
-					<li>
-						<a href="#">故障处理</a>
-					</li>
-				</ul>
-			</div>
+		<div class="page-bar">
+			<ul class="page-breadcrumb">
+				<li><i class="glyphicon glyphicon-home"></i> 设备管理
+					<i class="glyphicon glyphicon-chevron-right"></i></li>
+				<li><a href="view/equip/equipList"> 设备库管理</a></li>
+			</ul>
+		</div>
 			<!-- END PAGE HEADER-->
 			<ul class="nav nav-tabs">
 				<li class="active">

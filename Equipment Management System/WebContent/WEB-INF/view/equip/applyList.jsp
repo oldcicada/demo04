@@ -6,24 +6,22 @@
 <head>
 <meta charset="UTF-8">
 <%@ include file="/base.jsp"%>
-<link rel="stylesheet" type="text/css"
-	href="resource/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="resource/css/common.css" />
+<link rel="stylesheet" type="text/css" href="resource/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="resource/css/common.css"/>
 </head>
 <body>
 	<div class="page-container">
 		<!-- BEGIN PAGE HEADER-->
 		<div class="page-bar">
 			<ul class="page-breadcrumb">
-				<li><i class="glyphicon glyphicon-home"></i> <a href="#">设备管理</a>
+				<li><i class="glyphicon glyphicon-home"></i> 设备管理
 					<i class="glyphicon glyphicon-chevron-right"></i></li>
-				<li><a href="view/equip/applyForm">故障申报</a></li>
+				<li><a href="view/equip/applyList"> 设备报修处理</a></li>
 			</ul>
 		</div>
 		<!-- END PAGE HEADER-->
 		<ul class="nav nav-tabs">
-			<li class="active"><a href="view/eqiup/applyList"> 设备列表 </a></li>
-			<li><a href="view/equip/applyForm"> 故障申报</a></li>
+			<li class="active"><a href="view/eqiup/applyList"> 申报列表 </a></li>
 		</ul>
 		<div class="row">
 			<div class="col-md-12">
