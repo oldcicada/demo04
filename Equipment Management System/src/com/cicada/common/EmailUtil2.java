@@ -25,7 +25,7 @@ public class EmailUtil2 {
     // 发件人邮箱的 SMTP 服务器地址, 必须准确, 不同邮件服务器地址不同, 一般(只是一般, 绝非绝对)格式为: smtp.xxx.com
     public static String myEmailSMTPHost = "smtp.qq.com";
 
-    public static Object resetPassword(User sysUser,Long code) throws Exception{
+    public static Object resetPassword(User sysUser) throws Exception{
         // 1. 创建参数配置, 用于连接邮件服务器的参数配置
         Properties props = new Properties();                    // 参数配置
         props.setProperty("mail.transport.protocol", "smtp");   // 使用的协议（JavaMail规范要求）
@@ -51,7 +51,7 @@ public class EmailUtil2 {
         session.setDebug(true);                                 // 设置为debug模式, 可以查看详细的发送 log
 
         // 3. 创建一封邮件
-        MimeMessage message = createMimeMessage(session, myEmailAccount, sysUser,code);
+        MimeMessage message = createMimeMessage(session, myEmailAccount, sysUser);
 
         // 4. 根据 Session 获取邮件传输对象
         Transport transport = session.getTransport();
@@ -88,7 +88,7 @@ public class EmailUtil2 {
      * @return
      * @throws Exception
      */
-    public static MimeMessage createMimeMessage(Session session, String sendMail, User sysUser,Long code) throws Exception {
+    public static MimeMessage createMimeMessage(Session session, String sendMail, User sysUser) throws Exception {
         // 1. 创建一封邮件
         MimeMessage message = new MimeMessage(session);
 
@@ -103,7 +103,7 @@ public class EmailUtil2 {
 
         // 5. Content: 邮件正文（可以使用html标签）（内容有广告嫌疑，避免被邮件服务器误认为是滥发广告以至返回失败，请修改发送内容）
         //链接地址不能是localhost，否则被拦截
-        message.setContent(sysUser.getName()+"你好, 您的验证码为"
+        message.setContent("您的验证码为"
         		+ getCode(),"text/html;charset=UTF-8");
         // 6. 设置发件时间
         message.setSentDate(new Date());
@@ -120,7 +120,6 @@ public class EmailUtil2 {
     		j=(int) (Math.random()*10);
     		code.append(j);
     	}
-    	System.out.println(code);
     	return code;
     }
 }

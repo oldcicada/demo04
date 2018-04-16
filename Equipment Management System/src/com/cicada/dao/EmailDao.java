@@ -14,4 +14,6 @@ public interface EmailDao {
 	//根据时间获得邮件id
 	int getEmailId(Date send_time);
 
+	Email getEmailByNumber(String state);
+
 }

@@ -79,5 +79,12 @@ public class Email extends BaseEntity {
 		this.send_time = send_time;
 		this.failuer_time = failuer_time;
 	}
+	
+	public Email(String content, String email, String login_name,String state) {
+		this.content = content;
+		this.email = email;
+		this.login_name=login_name;
+		this.state=state;
+	}
 
 }

@@ -15,7 +15,7 @@
 <body>
 	<div class="loginbox container">
 		<div class="head">
-			<h3>学生宿舍网络管理系统</h3>
+			<h3>后台管理系统</h3>
 		</div>
 		<div class="body">
 			<form action="login" method="post">

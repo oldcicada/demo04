@@ -8,19 +8,6 @@
 <link rel="stylesheet" type="text/css"
 	href="resource/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="resource/css/common.css" />
-<style type="text/css">
-.headpicture {
-	width: 60px;
-	height: 60px;
-	margin: 5px;
-}
-
-.headpicture img {
-	width: 100%;
-	height: 100%;
-	border-radius: 50%;
-}
-</style>
 </head>
 <body>
 	<div class="page-container">
@@ -41,8 +28,7 @@
 					class="form-horizontal">
 					<div class="form-body">
 						<h3 class="form-section">修改密码</h3>
-						<input type="hidden" name="id" value="${id}" /> <input
-							type="hidden" name="email" value="${email}" />
+						<input type="hidden" value="${state }" name="number">
 						<div class="form-group">
 							<label class="control-label col-md-3">新密码：</label>
 							<div class="col-md-4">
@@ -79,20 +65,5 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="resource/js/jquery.min.js"></script>
-	<script type="text/javascript">
-		var sexValue = $('#sexvalue').val();
-		$("input[name=sex]").each(function() {
-			if ($(this).val() == sexValue) {
-				$(this).attr("checked", "checked");
-			}
-		});
-		var roleValue = $('#roleId').val();
-		$("input[name=role]").each(function() {
-			if ($(this).val() == roleValue) {
-				$(this).attr("checked", "checked");
-			}
-		});
-	</script>
 </body>
 </html>

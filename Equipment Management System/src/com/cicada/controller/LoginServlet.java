@@ -67,7 +67,6 @@ public class LoginServlet extends HttpServlet {
 		us.updateLoginMessage(user.getLogin_ip(), user.getId());
 
 		// session存储user信息
-		System.out.println(user.toString());
 		HttpSession session = request.getSession(true);
 		session.setAttribute("user", user);
 		if (remerber == null) {

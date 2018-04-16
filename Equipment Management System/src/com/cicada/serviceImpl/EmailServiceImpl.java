@@ -42,10 +42,17 @@ public class EmailServiceImpl implements EmailService {
 	//根据email获得邮件信息
 		public Email getEmailMessage(int id) {
 			 sqlSession = SqlSessionFactoryUtil.getSqlSession();
-			 sqlSession = SqlSessionFactoryUtil.getSqlSession();
 				ed = sqlSession.getMapper(EmailDao.class);
 				Email email = ed.getEmailMessage(id);
 				sqlSession.close();
+				return email;
+		}
+		//根据流水号查询Email信息
+		public Email getEmailByNumber(String number) {
+			 sqlSession = SqlSessionFactoryUtil.getSqlSession();
+			 ed = sqlSession.getMapper(EmailDao.class);
+			 Email email=ed.getEmailByNumber(number);
+			 sqlSession.close();
 				return email;
 		}
 }

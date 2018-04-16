@@ -14,4 +14,6 @@ public interface EmailService {
 
 	// 根据email获得邮件信息
 	public Email getEmailMessage(int id);
+//根据流水号查询Email信息
+	Email getEmailByNumber(String number);
 }

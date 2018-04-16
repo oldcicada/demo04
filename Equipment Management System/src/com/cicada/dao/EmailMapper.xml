@@ -18,8 +18,8 @@ VALUES
     #{content},
     #{login_name},
     #{email},
-    #{send_time},
-    #{failuer_time},
+    now(),
+    date_add(now(),interval 2 minute),
     0
   ) 
 </insert>
@@ -31,5 +31,8 @@ select id from email where send_time=#{send_time}
 </select>
 <select id="getEmailMessage" parameterType="int" resultType="email">
 select failuer_time,content from email where id=#{id}
+</select>
+<select id="getEmailByNumber" parameterType="string" resultType="email">
+select failuer_time,content from email where state=#{state}
 </select>
 </mapper>
